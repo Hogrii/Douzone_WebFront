@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style type="text/css">
+      /* css 주석 처리 
+        CSS, Script >> 선택자(selector)
+
+        가상 선택자 : 의미만 존재 >> :link, :visited, :hover, :active
+       */
+      a:link {
+        /* 링크 */
+        color: red;
+        text-decoration: none;
+      }
+
+      a:visited {
+        /* 링크 방문 후 */
+        color: green;
+        text-decoration: none;
+      }
+
+      a:hover {
+        /* 링크에 마우스 올렸을 때 */
+        color: gold;
+      }
+
+      a:active {
+        /* 링크를 클릭했을 때 */
+        color: blue;
+      }
+      /*
+        CSS의 적용은 기존에 존재하는 태그(요소)를 기준으로 적용
+        ex) p, h3, div, hr 등등
+
+        selector
+
+        다중 선택자 : h1, h2, h3 { color: red }
+        단일 선택자 : h4 { color: blue }
+       */
+      h1,
+      h2,
+      h3 {
+        /* 다중 선택자 */
+        color: red;
+      }
+
+      h4 {
+        /* 단일 선택자 */
+        color: blue;
+      }
+
+      /*
+        Today Point
+        사용자 정의 CSS
+        조건 :  . >> class 적용
+                # >> id 적용
+        css, javascript, jquery에 공통으로 적용
+       */
+      #jhlee {
+        color: gold; /* #으로 만든 것은 id 속성으로 적용.. page 1개만 적용 */
+      }
+
+      .lee {
+        color: blue; /* .으로 만든 것은 class 속성으로 적용.. page에 여러개 사용 */
+      }
+    </style>
+  </head>
+  <body>
+    <a href="http://president.go.kr">방문하기</a>
+    <p id="jhlee">id라는 속성을 이용해서 CSS를 적용</p>
+    <p class="lee">class라는 속성을 이용해서 CSS를 적용</p>
+    <p class="lee">class라는 속성을 이용해서 CSS를 적용</p>
+    <p class="lee">class라는 속성을 이용해서 CSS를 적용</p>
+  </body>
+</html>

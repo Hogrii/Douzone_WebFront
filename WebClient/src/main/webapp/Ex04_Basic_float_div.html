@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>영역을 정의하는 div와 float</title>
+    <style>
+      /* div {
+        float: left;
+      } */
+    </style>
+  </head>
+  <body>
+    <div style="width: 100px; height: 100px; background-color: yellow"></div>
+    <div style="width: 100px; height: 100px; background-color: red"></div>
+    <div style="width: 100px; height: 100px; background-color: blue"></div>
+    <hr />
+    <div
+      style="width: 100px; height: 100px; background-color: yellow; float: left"
+    ></div>
+    <!-- 노란색이 떠있는 상태이기 때문에 빨간색이 노란색 뒤로 들어가게 된다 -->
+    <div style="width: 120px; height: 100px; background-color: red"></div>
+    <div style="width: 100px; height: 100px; background-color: blue"></div>
+    <hr />
+    <div
+      style="width: 100px; height: 100px; background-color: yellow; float: left"
+    ></div>
+    <div
+      style="width: 100px; height: 100px; background-color: red; float: left"
+    ></div>
+    <!-- 노란색과 빨간색이 둘 다 떠있기 때문에 파란색은 노란색 뒤로 들어가게 된다 -->
+    <!-- 노란색과 빨간색은 서로 떠있기 때문에 빨간색이 노란색 옆으로 붙는다.-->
+    <div style="width: 210px; height: 100px; background-color: blue"></div>
+    <hr />
+    <div
+      style="
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+        float: right;
+      "
+    ></div>
+    <div
+      style="width: 100px; height: 100px; background-color: red; float: right"
+    ></div>
+    <div
+      style="width: 100px; height: 100px; background-color: blue; float: right"
+    ></div>
+  </body>
+</html>

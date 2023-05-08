@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- internal 방식 : 현재 page 내부에서만 Css 적용 : 유지보수 고민 -->
+    <style type="text/css">
+      body {
+        background-color: gray;
+      }
+
+      h3 {
+        color: tomato;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+        CSS 적용하는 방법 3가지
+
+        1. inline
+        2. internal
+        3. external
+    -->
+    <h3>1. inline 방식(태그 안쪽 style)</h3>
+    <!-- 사용하기는 쉽지만 유지보수가 불편하다 -->
+    <p style="background-color: aqua">문단 태그</p>
+    <h3 style="color: green">나는 무슨색?</h3>
+    <!-- 초록색.. 스타일이 여러개 있을 때는 안쪽 속성이 우선한다 -->
+  </body>
+</html>

@@ -24,12 +24,20 @@
         1. inline
         2. internal : page 내에서만
         3. external : 외부에 별도의 파일을 생성 >> common.css -> 유지보수가 편해서 많이 선호
+
+        Inline - by using the style attribute inside HTML elements
+        Internal - by using a <style> element in the <head> section
+        External - by using a <link> element to link to an external CSS file
     -->
     <h3>1. inline 방식(태그 안쪽 style)</h3>
     <!-- 사용하기는 쉽지만 유지보수가 불편하다 -->
     <p style="background-color: aqua">문단 태그</p>
     <h3 style="color: green">나는 무슨색?</h3>
     <!-- 초록색.. 스타일이 여러개 있을 때는 안쪽 속성이 우선한다 -->
+
+    <hr />
+    <p>Do not forget to buy <mark>milk</mark> today.</p>
+    <p>2<sup>4</sup> text.</p>
 
     <h1>외부 파일을 참조합니다</h1>
     <h3>웹상에서 이미지 파일을 서버에서 참조</h3>

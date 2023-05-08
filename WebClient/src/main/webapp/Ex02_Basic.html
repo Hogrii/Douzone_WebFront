@@ -15,19 +15,26 @@
         color: tomato;
       }
     </style>
+    <link rel="stylesheet" href="css/common.css" />
   </head>
   <body>
     <!--
         CSS 적용하는 방법 3가지
 
         1. inline
-        2. internal
-        3. external
+        2. internal : page 내에서만
+        3. external : 외부에 별도의 파일을 생성 >> common.css -> 유지보수가 편해서 많이 선호
     -->
     <h3>1. inline 방식(태그 안쪽 style)</h3>
     <!-- 사용하기는 쉽지만 유지보수가 불편하다 -->
     <p style="background-color: aqua">문단 태그</p>
     <h3 style="color: green">나는 무슨색?</h3>
     <!-- 초록색.. 스타일이 여러개 있을 때는 안쪽 속성이 우선한다 -->
+
+    <h1>외부 파일을 참조합니다</h1>
+    <h3>웹상에서 이미지 파일을 서버에서 참조</h3>
+    <img src="https://www.baemin.com/_next/static/images/img-bike@2x.png" />
+    <!-- 웹 절대경로 -->
+    <!-- AWS s3서버 이미지 저장-->
   </body>
 </html>

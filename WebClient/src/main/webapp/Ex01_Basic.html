@@ -1,17 +1,71 @@
 <!DOCTYPE html>
+<!-- HTML5를 사용한다고 명시하는 코드 -->
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	1. HTML describes the structure of a Web page<br> <!-- https://www.w3schools.com/html/html_intro.asp -->
-	
-	<!-- https://www.w3schools.com/js/js_htmldom.asp : DOM 구조-->
-	<!-- 파일을 실행시키면 DOM tree 구조로 메모리에 올려서 가지고 있는다 -->
-	<!-- html 문서를 볼 때는 계층적인 형태가 중요 -->
-	
-	2. HTML5가 웹 표준이다 -> 어떤 브라우저에서든지 태그가 똑같이 적용 된다<br>
-	3. WEB 브라우저(소프트웨어) 역할(해석기) : HTML, CSS, Javascript 파일을 해석해서 화면에 보여준다<br>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+  </head>
+  <body>
+    1. HTML describes the structure of a Web page<br />
+    <!-- https://www.w3schools.com/html/html_intro.asp -->
+
+    <!-- https://www.w3schools.com/js/js_htmldom.asp : DOM 구조 -->
+    <!-- 파일을 실행시키면 DOM tree 구조로 메모리에 올려서 가지고 있는다 -->
+    <!-- html 문서를 볼 때는 계층적인 형태가 중요 -->
+
+    2. HTML5가 웹 표준이다 -> 어떤 브라우저에서든지 태그가 똑같이 적용 된다<br />
+    3. WEB 브라우저(소프트웨어) 역할(해석기) : HTML, CSS, Javascript 파일을
+    해석해서 화면에 보여준다<br />
+    4. F12 개발자 도구 가지고 놀기<br />
+
+    <p>
+      1. Front 개발 : 메모장, 웹브라우저<br />
+      2. Tool : VS코드, (Live Server > 아파치 > 웹에서만 제공 > html, css,
+      javascript)<br />
+      3. Front 개발, Back 개발 : 아파치 톰켓(web server + was) > 이클립스
+      사용<br />
+    </p>
+
+    <h3>This is heading 3</h3>
+    <p>This is a paragraph</p>
+    <!-- p태그는 기본적으로 margin을 16px 가지고 있다 -->
+    <p>This is another paragraph</p>
+    <a href="https://www.w3schools.com">This is a link</a>
+    <br />
+    <!-- <img src="/WebClient/src/main/webapp/images/w3schools.jpg" alt="W3Schools.com" width="104" height="142"> alt : 이미지의 경로가 잘못되었을때 대체 텍스트를 보여준다 -->
+    <img
+      src="images/w3schools.jpg"
+      alt="W3Schools.com"
+      width="104"
+      height="142"
+    />
+    <!-- 상대경로 -->
+    <br />
+    <p style="color: gold">in line style 적용하기</p>
+    <br />
+    <p title="I'm 'a' tooltip">This is a paragraph.</p>
+    <!-- 바깥이 더블쿼테이션으로 감싸져 있으면 안쪽의 싱글쿼테이션은 문자열로 인식 -->
+    <p title='Im "a" tooltip'>This is a paragraph.</p>
+    <!-- 바깥이 싱글쿼테이션으로 감싸져 있으면 안쪽의 더블쿼테이션은 문자열로 인식 -->
+
+    <pre>
+		*
+		**
+		***
+		****
+		*****
+		*
+		*
+	</pre
+    >
+    <!-- 있는 그대로 출력하는 태그 : 앞에 있는 공백도 다 출력..-->
+    <!-- html 주석 처리하기 -->
+
+    <h3>
+      Html은 문서의 구조를 정의하는 언어 .. >> 디자인 작업의 한계점이 존재
+    </h3>
+    <h3>CSS를 통해서 디자인 작업을 한다</h3>
+    <font style="color: red; font-family: 궁서체">글자정의</font>
+    <!-- inline style sheet -->
+  </body>
 </html>

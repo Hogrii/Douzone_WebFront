@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <fieldset>
+        <legend>Text:Password</legend>
+        Text : <input type="text" name="" id="userid" /><br />
+        <!-- name은 server가 사용하고 id는 client(css, javascript)가 사용 -->
+        Password : <input type="password" name="" maxlength="5" /><br />
+        <!-- maxlength는 최대로 입력 가능한 글자의 수를 제한 -->
+        <hr />
+        Text :
+        <input type="text" maxlength="10" value="기본값" size="100px" /><br />
+        <!-- value -> placeholder? size -> 길이 -->
+        <hr />
+        readonly (읽기전용 : 서버로 전송 가능)<br />
+        Text :
+        <input type="text" name="user" id="user" value="hong" readonly /><br />
+        <hr />
+        disabled (비활성화 : 서버로 전송 불가)<br />
+        Text :
+        <input
+          type="text"
+          name="user"
+          id="user"
+          value="hong"
+          disabled="disabled"
+        /><br />
+      </fieldset>
+    </form>
+  </body>
+</html>

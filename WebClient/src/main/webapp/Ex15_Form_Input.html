@@ -33,6 +33,110 @@
           disabled="disabled"
         /><br />
       </fieldset>
+
+      <fieldset>
+        <legend>체크박스(다중선택)</legend>
+        당신의 취미는 <br />
+        농구:<input
+          type="checkbox"
+          name="sports_1"
+          value="A"
+          checked="checked"
+        />
+        야구:<input type="checkbox" name="sports_2" value="B" /> 축구:<input
+          type="checkbox"
+          name="sports_3"
+          value="C"
+        />
+      </fieldset>
+
+      <!-- 
+          get 방식
+          register.jsp?sports_1=A&sports_2=B&sports_3=C >>> 서버로 전송
+
+          String s = request.getParameter("sports_1");
+          String s1 = request.getParameter("sports_2");
+          String s2 = request.getParameter("sports_3");
+
+          농구:<input type="checkbox" name="sports" value="A" checked="checked">
+          야구:<input type="checkbox" name="sports" value="B">
+          축구:<input type="checkbox" name="sports" value="C">
+
+          get 방식
+          register.jsp?sports=A&sports=B&sports=C >>> 서버로 전송 
+
+          String[] sportsarr = request.getParameterValues("sports")
+          String[] sportsarr = {"A" , "B" , "C"};
+          sportsarr[0] = "A"
+          sportsarr[1] = "B"
+          sportsarr[2] = "C"	    	
+	     -->
+
+      <fieldset>
+        <legend>select 태그 (단일선택 (년 , 월 , 일))</legend>
+        <select name="year">
+          <option value="2022">2022년</option>
+          <option value="2021" selected="selected">2021년</option>
+          <option value="2020">2020년</option>
+        </select>
+        <!-- 
+	     		register.jsp?year=2022 서버로 전송
+	     		
+	     		서버에서 받는 데이터는 문자열 데이터
+	     		
+	     		int year = Integer.parseInt(request.getParameter("year"));
+	     	
+	     	 -->
+      </fieldset>
+
+      <fieldset>
+        <legend>select 태그 (다중선택) 웹 접근성 문제 ....</legend>
+        <select name="year" multiple="multiple">
+          <option value="2022">2022년</option>
+          <option value="2021" selected="selected">2021년</option>
+          <option value="2020">2020년</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>
+          라디오 버튼 (단일선택 : 남 , 여 ) : name 같으면 하나의 그룹
+        </legend>
+        남<input type="radio" name="gender" value="1" /><br />
+        여<input type="radio" name="gender" value="2" checked="checked" /><br />
+        <!-- checked="checked"는 기본값 지정 -->
+        <br />
+        대<input
+          type="radio"
+          name="product"
+          value="1"
+          checked="checked"
+        /><br />
+        중<input type="radio" name="product" value="2" /><br />
+        소<input type="radio" name="product" value="3" /><br />
+      </fieldset>
+
+      <fieldset>
+        <legend>기타 등등</legend>
+        1. 화면에 출력이 안되요 (소스는 가지고 있어요)
+        <input type="hidden" value="1000" name="data" />
+        <hr />
+        2. 파일 업로드 (클라이언트 파일 선택 가능)
+        <input type="file" name="imgupload" />
+        <hr />
+        3. 게시판 글쓰기 (여러줄): 초기 화면의 크기 (rows , cols 몇줄에 몇칸)
+        <textarea rows="10" cols="50">기본크기</textarea
+        ><!-- 내가 정했던 rows를 넘어서면 스크롤이 생긴다 -->
+        <hr />
+        4. 각종 버튼들
+        <input type="button" value="나 눌러봐" onclick="alert('쉬는시간')" />
+        <br />
+        <!--
+          type="image"
+          type="submit"
+          type="reset"
+          -->
+      </fieldset>
     </form>
   </body>
 </html>

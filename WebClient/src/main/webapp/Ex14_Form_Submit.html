@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--
+        회원가입
+        로그인
+        게시판 글쓰기 만들 때 사용하는 태그
+    -->
+    <h3>로그인</h3>
+    <form action="Ex14_ok.jsp" method="get">
+      ID: <input type="text" name="id" /><br />
+      PWD: <input type="password" name="pwd" /><br />
+      <input type="submit" value="전송하기" />
+      <input type="reset" value="입력값 초기화" />
+    </form>
+    <!--
+        form 태그는 전송을 담당하는 태그(클라이언트가 입력한 데이터를 가지고 목적지(web server)로 가는 태그)
+        form -> 운송(전송) 수단
+
+        1. action="목적지 주소" >> jsp >> action="loginok.jsp"
+                               >> servlet >> action="login.do"
+        2. method="전송방식" >> 배를 타는 방식, 비행기 타는 방식??
+        2.1 method="get" 배를 타고 가는 것 >> Ex14_ok.jsp
+            ex) http://192.168.0.46:8090/WebClient/Ex14_ok.jsp?id=jhlee&pwd=1004
+            서버가 정보를 받아서 처리 : request.getParameter("id"), request.getParameter("pwd")
+            get 방식의 단점 -> 주소에 입력한 정보가 노출..
+
+            get 방식은 링크를 통해서 사용이 가능
+            >> 게시판 글번호 클릭(상세보기 가기)
+            >> boardDetail.jsp?boardid=100;
+            >> <a href="boardDetail.jsp?boardid=100&category=board">100번 글</a>
+
+        2.2 method="post" 비행기 타고 가는 것 >> Ex14_ok.jsp >> 단점 : form 태그 안에서만 사용이 가능
+            ex) http://192.168.0.46:8090/WebClient/Ex14_ok.jsp
+            http 프로토콜 내부에 "header"라는 곳에 숨겨서 전송
+        
+        3. 
+        3.1 <input type="submit" value="전송하기" /> >> 선장 역할,, 서버로 출발! <> reset(값들을 초기화)
+        3.2 input type="image"는 내부적으로 submit 기능을 가지고 있다
+        3.3 input type="button"(디자인만 버튼) onClick="call()" >> 별도의 javascript를 사용해야한다(이벤트 헨들러)
+            ex) function call() { document.form.submit(); }
+        
+    -->
+  </body>
+</html>

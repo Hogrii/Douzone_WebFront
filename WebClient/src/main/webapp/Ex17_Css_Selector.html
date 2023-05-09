@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style type="text/css">
+      /*
+        선택자(selector : css, javascript, Jquery 활용)
+
+        1. 기본 선택자(기존에 존재하는 태그) : p, div, hr, h3
+        ex) p{color:red}
+
+        2. 다중 선택자(group)
+        ex) p, h1, h2, h3{color:blue}
+
+        3. 사용자 정의(. >> class, # >> id) POINT
+
+        4. 결합 선택자
+        p{color:gold}
+        p.one{border:1px} >> <p class="one"></p>
+        p.two{...}        >> <p class="two"></p>
+
+        5. 자손, 후손 선택자
+        div p {color:green} -> 한칸 띄우면 자손
+
+        6. 자식 선택자
+        .parent > p
+
+        7. 속성 선택자(attribute >> color, font, size)
+        input[type=text] {color:red}
+        input[type=button] {font-size:10px}
+
+        8. + 인접형제, ~ 일반형제
+
+        9. 가상 선택자(의미만 존재)
+        ex) a:link >> :link
+       */
+
+      div p {
+        color: green;
+        font-family: "궁서체", "명조체", "광수체";
+      }
+
+      .parent > p {
+        border: 1px double blue;
+        padding: 10px;
+        font-size: 15px;
+      }
+
+      input[type="text"] {
+        color: red;
+      }
+
+      input[type="button"] {
+        font-size: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <p>나는 어떤 스타일이 적용될까?</p>
+    <div>DIV TAG</div>
+
+    <h3>하위 자손 선택자</h3>
+    <div>
+      <p>선택자</p>
+      <p>선택자2</p>
+      <p>선택자3</p>
+      <div><p>선택자4</p></div>
+    </div>
+    <hr />
+  </body>
+</html>

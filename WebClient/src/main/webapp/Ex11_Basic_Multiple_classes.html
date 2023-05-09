@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .city {
+        /* class 속성을 이용해 여러번 사용하겠다 */
+        background-color: tomato;
+        color: white;
+        padding: 10px;
+      }
+
+      .main {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="myFunction()">Hide elements</button>
+    <h2 class="city main">London</h2>
+    <h2 class="city">Paris</h2>
+    <h2 class="city">Tokyo</h2>
+
+    <script>
+      function myFunction() {
+        var x = document.getElementsByClassName("city");
+        for (var i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+      }
+    </script>
+  </body>
+</html>

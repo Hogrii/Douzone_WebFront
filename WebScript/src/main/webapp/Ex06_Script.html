@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>내장 함수, 사용자 정의 함수</h3>
+    <button onclick="callConfirm()">클릭 사건 발생(함수 호출)</button><br />
+    <button onclick="showPopup()">전통팝업</button><br />
+    <button onclick="myFunc()">팝업(object)</button><br />
+    <button onclick="goUrlTime('http://www.google.com')">3초 후 이동</button
+    ><br />
+    <button onclick=""></button><br />
+
+    <script>
+      /*
+        JAVA
+        public void print() {}
+        public String print() {return "";}
+        public int print(int num1, int num2) {return num1 + num2;}
+
+        Javascript
+        function callConfirm() {} // function 함수명() {}
+        function callConfirm(num1, num2) {}
+        function callConfirm() {return 100;}
+        -> void, return type 둘 다 없음
+       */
+
+      function callConfirm() {
+        // 사용자 정의 함수
+        if (window.confirm("삭제할까요..")) {
+          // confirm 내장함수 return true, false
+          alert("예");
+        } else {
+          alert("아니오");
+        }
+      }
+
+      /*
+        팝업창()
+        전통적인 방법 : 새로운 창 띄워서 소스 제공
+        현대적인 방법 : 페이지 안에 <div> 팝업 되는 내용을 만들어서 띄움
+
+        window.open(URL, name, space, replace)
+       */
+
+      showPopup = () => {
+        window.open("Ex06_Popup.html", "zipcode", "width=400, height=400"); // 전통적인 방식
+      };
+
+      myFunc = () => {
+        let popupwindow = window.open(
+          "Ex06_Popup.html",
+          "zipcode",
+          "width=400, height=400"
+        );
+        popupwindow.document.write("<p>this is zipcode window</p>");
+      };
+
+      // JAVA : public void goUrlTime(String url) {}
+      goUrlTime = (url) => {
+        window.setTimeout("location.href='" + url + "'", 3000); // ms(milisecond)
+        // url >> http://www.google.com
+        // location.href="http://www.google.com"
+        // 구글 주소로 이동하라는 뜻
+      };
+
+      // JAVA public int myCallFunc(int i, int j, int k) { return i+j+k; }
+      myCallFunc = (i, j, k) => {
+        return i + j + k;
+      };
+      let result = myCallFunc(10, 20, 30);
+      console.log(result);
+
+      // javascript 익명함수(anomnymous func)
+      // 이름이 없음 >> 한번만 쓰겠다(재사용 x)
+      // function 이름 {}
+      changeColor = function () {
+        // 화살표함수는 모두 익명함수?
+        window.document.bgColor = "silver";
+        window.document.fgColor = "red";
+      };
+    </script>
+  </body>
+</html>

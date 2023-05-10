@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="call()">변수확인</button>
+    <script>
+      /*
+        1. 변수 생성 > 값 입력 > 타입 생성(number, string)
+        var a; 정의되지 않았음!
+        let b;
+        a = 10; 타입 설정 > number
+        b = "A" 타입 설정 > string
+        ES5 이전 문법(var : 전역(페이지 전체), 지역(함수)) >> 혼란 >> 2015 ES6(ECMA) >> let, const
+
+        현재) var, let, const
+        신규) let, const >> 권장
+
+        초기화(변수가 처음 값을 가짐)
+        javascript(정수, 실수, boolean, 문자(문자열))
+        내부적으로 가지고 있는 타입(Number, boolean, Array, Object, string 등등)
+
+        변수(scope)
+        1. 현재 페이지 기준 >> Ex04_Script.html 안에서만 유효
+        1.1 let name = "jhlee"; >> 페이지 전체(Ex04_Script.html)에서 사용 가능 >> global 변수(전역 변수)
+        1.2 function call() { let age = 31 } >> 함수 안에서만 사용 가능 >> local 변수(지역 변수)
+       */
+
+      let name = "jhlee";
+      call = () => {
+        let age = 31;
+        console.log("당신의 이름은 : " + name + " 나이는 : " + age);
+      };
+
+      let n; // 초기화 되지 않음(정의되지 않았을 뿐)
+      console.log(n);
+      n = 100; // 사용하기 전에만 초기화 하면 된다
+      console.log(n);
+
+      let i, j;
+      i = 200;
+      j = 300;
+      let result = i + j;
+      console.log(result);
+    </script>
+  </body>
+</html>

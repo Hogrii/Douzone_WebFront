@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="print()">클릭하세요</button>
+    <p id="demo">demo라는 id는 p태그의 식별자</p>
+
+    <script>
+      /*
+        문서가 실행되면 웹 브라우저 메모리에 body 안에 있는 모든 요소가
+        로딩.. 메모리에 DOM tree 형태로 생성
+            DOM
+            HTML
+        head - body
+       */
+      print = () => {
+        let ele = document.getElementById("demo");
+        console.log(ele);
+        ele.innerHTML = "아 배고프다"; // id가 demo인 태그에 HTML text를 "아 배고프다"로 갱신
+      };
+
+      /*
+      function print() {
+        let ele = document.getElementById("demo");
+        console.log(ele);
+        ele.innerHTML = "아 배고프다";
+      }
+       */
+    </script>
+  </body>
+</html>

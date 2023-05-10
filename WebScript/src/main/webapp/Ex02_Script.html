@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="text/javascript">
+      // type="text/javascript" 사용 이유
+      // 1. HTML5는 js가 기본값이기 때문에 안써도 되는데..
+      // 2. 기본값이 아닐 경우 js임을 명시해야해서 사용하는 것
+      /*
+        javascript는 웹 브라우저가 해석(자원들: 객체들) >> 크롬, 사파리(해석기능(엔진) + 내장객체)
+       */
+      window.document.write("방가방가<br>"); // body에 찍음
+      // window 생략
+      document.write("window 객체 생략 가능<br>");
+
+      console.log("디버깅, 결과 미리보기, 오류메시지 확인"); // browser console에 찍음
+      console.log(10 + 10);
+
+      document.write("<b>hello world</b>");
+      document.write('<table border = "1">');
+      document.write("<tr><td>aa</td><td>bb</td></tr>");
+      document.write("</table>");
+
+      // var, let, const
+      var num; // 타입이 정해지지 않은 상태 >> 정수, 실수, 날짜, 문자 등 다 올 수 있음
+      console.log(num); // undefined >> 오류 메시지가 아니라 아직 값이 정의되지 않았다는 정상 출력 메시지
+      num = 10;
+      console.log("num : " + num); // num : 10
+
+      let num2 = 100;
+      console.log(num2); // 100
+      console.log(typeof num); // java의 instanceof와 같음, number
+      console.log(typeof num2); // number
+
+      /*
+      // Today Point
+      // javascript는 순서대로 실행된다 -> body 내부에 있는 form이 메모리에 올라가 있지 않다
+      let element = window.document.forms[0].elements[0];
+      console.log(element);
+       */
+
+      // 순서에 관계없이 프로그래밍(함수 만들어서 호출)
+      function data() {
+        let element = window.document.forms[0].elements[0];
+        alert(element);
+      }
+    </script>
+  </head>
+  <body>
+    <form action="#" method="get" name="myform">
+      <input type="text" name="userid" value="hong" /><br />
+      <input type="password" name="pwd" value="1004" /><br />
+      <input type="submit" value="전송" />
+    </form>
+
+    <input type="button" value="함수호출" onclick="data()" />
+
+    <!-- 방법 1. script를 안전하게 뒤쪽에 사용한다 -->
+    <script>
+      let element = window.document.forms[0].elements[0];
+      console.log(element);
+      // element >> <input type="text" name="userid" value="hong">
+      console.log(element.value); // hong
+      console.log(element.value.length); // 4
+
+      let value = window.document.myform.userid.value;
+      console.log("타입 : " + typeof value); // 타입 : string
+
+      if (value.length < 5) {
+        alert("다시 입력해");
+        element.value = "";
+      }
+    </script>
+  </body>
+</html>

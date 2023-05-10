@@ -32,7 +32,7 @@
         6.2 종결자 ;
         6.3 타입(var , const , let) : let i="A"; let s = "aaa"; const NUM=100;
         유연한 언어 : var v; v=10 이때 내부적으로 (값을 받는 시점에) >> number
-        ex) int i =10; double d = 3.14;
+        ex) int i =10; double d = 3.14; >> javascript는 타입 강제가 불만!
         연산자 , 제어문(java 동일) , 객체 
 
         6.4 사용법 (css 사용법과 동일)
@@ -41,6 +41,29 @@
         -external(외부 파일 :common.js >> link 방식) 선호 (유지보수 , 재사용)
      */
     </script>
+    <style type="text/css"></style>
+    <script type="text/javascript" src="script/common.js"></script>
   </head>
-  <body></body>
+  <body>
+    <h3>in-line</h3>
+    <input type="button" value="inline" onclick="alert('inline')" />
+    <!--
+        이벤트(사건) -> 발생되면 -> 처리(함수) : 핸들러함수
+        alert() 내장함수 >> 웹 브라우저가 가지고 있는 객체에 소속된 함수
+    -->
+    <hr />
+    <h3>internal</h3>
+    <input type="button" value="internal" onclick="call()" />
+    <hr />
+
+    <h3>external</h3>
+    <input type="button" value="external" onclick="ecall()" />
+
+    <script>
+      /* 함수를 바로 생성하고 사용 */
+      function call() {
+        alert("internal");
+      }
+    </script>
+  </body>
 </html>

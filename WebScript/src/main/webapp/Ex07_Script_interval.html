@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      /*
+        // https://www.w3schools.com/jsref/met_win_setinterval.asp
+        // setInterval(function, milliseconds);
+
+        ex) function call() {} : 재사용가능 함수
+            setInterval(function(){}, 1000) : 1초마다 익명함수 호출(callBack function)
+
+        1. 익명함수(일회성 함수) : 재사용 불가 -> function() {}
+        2. callback함수(프로그램 논리(흐름)에 의해서 자동호출되는 함수)
+            >> 1초마다 익명함수가 재호출
+       */
+      let mytimer = window.setInterval(function () {
+        let d = new Date(); // Date는 Javascript 객체
+        let t = d.toLocaleTimeString();
+        document.getElementById("time").innerHTML = t;
+      }, 1000);
+
+      myTimerStop = () => {
+        window.clearInterval(mytimer);
+      };
+    </script>
+  </head>
+  <body>
+    <p id="time"></p>
+    <button onclick="myTimerStop()">stop time</button>
+  </body>
+</html>

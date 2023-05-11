@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      /*
+        유효성 검증
+        Web 환경
+        Client ---- Server
+        회원가입 검증(Server) >> 서버로 전송 >> 서버 검증 >> 유무를 클라이언트에 전송 -> 라운드 트립이 발생
+        회원가입 검증(Client) >> 클라이언트 검증 >> 서버로 전송 (v)
+
+        회원가입 : 서버가 받아서 검증(사용자 ID) >> DB 작업
+        *client 처리가 가능한 검증 모두 처리 >> 나머지(DB 작업이 필요)
+
+        처리 : javascript >> 사용자 정보 접근 >> 태그(input) 값을 읽을 수 있어야 한다
+       */
+    </script>
+  </head>
+  <body>
+    <form action="" method="get" name="loginform">
+      ID:<input type="text" name="txtuserid" id="txtuserid" /> PWD:<input
+        type="password"
+        name="txtpwd"
+        id="txtpwd"
+      />
+      <input type="button" value="전송" onclick="send()" />
+      <!--
+        <input type="submit">
+        <input type="image">
+        <input type="button" onclick="">
+      -->
+    </form>
+
+    <script>
+      function send() {
+        // 유효성 검증(개발자 정의) >> 문제가 없다면 >> 서버로 전송
+        // 원하는 값이 아니면 >> 재입력 요구
+        // 1. 요소의 정보를 가지고 오기 >> 전통적인 방법(비효율)
+        // document.forms[0].elements[0].value
+        // 권장사항 : DOM script >> document.getElementById() .. 모든 요소는 id 속성을 가지고 있어야 한다
+
+        const userid = document.loginform.txtuserid;
+        // userid >> <input type="text" name="txtuserid" id="txtuserid">
+        console.log(userid);
+        console.log(userid.value);
+
+        // DOM 요소의 id 식별자로 검색
+        const pwd = document.getElementById("txtpwd");
+        console.log(pwd);
+        console.log(pwd.value);
+
+        // 검증(검증 로직 요구사항 반영)
+        // 1.값의 입력 유무
+        // 2. 입력한 값이 로직(비지니스 : 요구사항)에 맞는지 확인
+        if (
+          userid.value == "" ||
+          !(userid.value.length >= 3 && userid.value.length <= 10)
+        ) {
+          alert("다시 입력해주세요");
+          document.loginform.txtuserid.focus(); // 커서가 텍스트칸에 들어간다
+          userid.select(); // 전체 블럭 잡기
+        } else {
+          alert("검증 완료");
+          // 서버로 전송
+          // action="Ex08_ok.jsp"
+          document.loginform.action = "Ex08_ok.jsp"; // 동적으로 처리가 가능하다
+          document.loginform.submit(); // <input type="submit">
+        }
+      }
+    </script>
+  </body>
+</html>

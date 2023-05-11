@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>scope</p>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <p id="demo4"></p>
+
+    <script>
+      var gname = "world";
+
+      myFunction();
+      function myFunction() {
+        // 함수안에서 변수 생성
+        // local variable
+        aaa = "아무개"; // 변수 인정함..;; >> global(사용금지)
+        console.log("지역 aaa : " + aaa);
+
+        var carname = "volvo"; // local variable
+        document.getElementById("demo1").innerHTML =
+          typeof carname + " " + carname + "<hr>";
+        document.getElementById("demo2").innerHTML =
+          typeof gname + " " + gname + "<hr>";
+      }
+      console.log(aaa);
+    </script>
+  </body>
+</html>

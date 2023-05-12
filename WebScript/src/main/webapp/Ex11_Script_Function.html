@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body onload="bodyLoad()">
+    <form action="#" name="myform">
+      <input
+        type="text"
+        id="myinput"
+        name="myinput"
+        onfocus="focusFunction()"
+        onblur="blurFunction()"
+      />
+      <br />
+      <select name="sel" onchange="selectTag()">
+        <option value="A">AA</option>
+        <option value="B">BB</option>
+        <option value="C">CC</option>
+        <option value="D">DD</option>
+      </select>
+      <br />
+      <input
+        type="text"
+        onmouseover="changeColor(this)"
+        onmouseout="changeColor2(this)"
+      /><br />
+      <input type="text" /><br />
+      <input type="text" value="1000" name="money" />
+    </form>
+    <script>
+      let str = "10+20+30";
+      document.write(str + "<br>");
+
+      // 1. eval()
+      // 문자열 수식 >> 계산식으로 >> "10+20+30" >> eval() >> 10+20+30 >> 계산
+      // "10+20A+30" >> Error
+      // 문자형 숫자 >> 숫자
+      document.write("eval() : " + eval(str) + "<br>");
+
+      // 2. isNaN >> Not a Number >> 너 숫자 아니니? >> true >> 숫자(false)
+      document.write(isNaN("12345") + "<br>"); // false
+      document.write(isNaN("12345A") + "<br>"); // true
+      document.write(isNaN("대한민국") + "<br>"); // true
+      document.write(isNaN("12345") + "<br>"); // false
+
+      // 문자열 함수 찾아보기
+      // https://www.w3schools.com/jsref/jsref_obj_string.asp
+
+      // 숫자형 함수 찾아보기
+      // https://www.w3schools.com/jsref/jsref_obj_number.asp
+
+      let i = "100";
+      let j = "200";
+      document.write("결합 : " + (i + j)); // 산술, 결합
+      document.write("<br> 연산 " + (Number(i) + Number(j)));
+
+      // Number()
+      // parseInt()
+      // parseFloat()
+
+      /*
+        사건(미리 만들어 놓음) >> 개발자는 행위를 정의(함수 생성) >> 사건 발생시 만든 함수를 호출(핸들러)
+
+        Event	    Description
+        onchange	An HTML element has been changed
+        onclick	    The user clicks an HTML element
+        onmouseover	The user moves the mouse over an HTML element
+        onmouseout	The user moves the mouse away from an HTML element
+        onkeydown	The user pushes a keyboard key
+        onload	    The browser has finished loading the page
+
+        https://www.w3scools.com/jsref/dom_obj_event.asp
+
+        Today Point
+        onload	    The browser has finished loading the page
+        >> index.html >> body 안에 있는 모든 요소가 웹 브라우저 메모리에 로딩이 되고 난 이후
+        >> onload에 함수를 연결하면 함수는 모든 요소가 로딩된 후에 호출된다
+
+        회원가입시 [] - []
+        onfocus="" >> 언제 발생? >> 포커스가 요소에 들어오면 발생하는 이벤트
+        onblur=""  >> 언제 발생? >> 포커스가 떠나면 발생
+       */
+
+      function bodyLoad() {
+        console.log("load ....");
+        // 나는 body 안에 있는 모든 요소를 제어 할 수 있다를 보장 받는다
+        let data = document.myform.money.value;
+        console.log(isNaN(data)); // false : 숫자라는 뜻
+      }
+
+      // 마우스가 들어올 때
+      function focusFunction() {
+        // DOM 방식
+        document.getElementById("myinput").style.background = "gold";
+      }
+
+      // 마우스가 떠날 때
+      function blurFunction() {
+        document.getElementById("myinput").style.background = "white";
+      }
+
+      function selectTag() {
+        const value = document.myform.sel.value;
+        alert(value);
+      }
+
+      function changeColor(obj) {
+        // input tag 전체를 받는다
+        // Java : this(객체자신)
+        // Javascript : this(요소자신) Point
+        console.log(obj); // obj >> <input type="text" onmouseover="changeColor()" onmouseout="changeColor2()"/>
+        obj.style.background = "gold";
+      }
+
+      function changeColor2(obj) {
+        console.log(obj);
+        obj.style.background = "white";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>주문정보</legend>
+        이름:<input type="text" name="username" /><br />
+        <input type="checkbox" name="checkmail" />배송정보 Email수신<br />
+        <hr />
+        <input type="checkbox" name="copy" onclick="copySend(this.form)" />
+        주문자 정보와 배송지 정보 동일
+      </fieldset>
+      <hr />
+      <fieldset>
+        <legend>배송지 정보</legend>
+        이름:<input type="text" name="copyname" /><br />
+        <input type="checkbox" name="copymail" />배송정보 Email수신<br />
+      </fieldset>
+    </form>
+
+    <script>
+      // global 변수
+      let name = "";
+      let email = false;
+
+      function initValue(frm) {
+        // username, email을 글로벌 변수에 담으면 아래 copySend function에서도 사용할 수 있다
+        name = frm.username.value;
+        email = frm.checkmail.checked;
+      }
+      function copySend(frm) {
+        // this.form을 사용하니까 form 태그를 모두 가져옴
+        console.log(frm);
+        console.log(frm.username.value);
+        console.log(frm.checkmail.checked); // true, false
+
+        if (frm.copy.checked) {
+          initValue(frm);
+          frm.copyname.value = name;
+          frm.copymail.checked = email;
+        } else {
+          //   alert("선택해지");
+          frm.copyname.value = "";
+          frm.copymail.checked = false;
+        }
+      }
+    </script>
+  </body>
+</html>

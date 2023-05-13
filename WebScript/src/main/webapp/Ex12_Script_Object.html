@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        javascript 다양한 내장 객체 제공 : 사용방법 2가지(1. new, 2. 이미 생성된 객체(그냥 사용))
+       */
+      let today = new Date();
+      console.log(today);
+      console.log(today.getFullYear());
+      console.log(today.getMonth() + 1); // month만 +1 해줘야 한다
+      console.log(today.getDate());
+      console.log(today.getHours());
+      console.log(today.getMinutes());
+      console.log(today.getSeconds());
+
+      // 자바 Math.Random(); >> static 함수
+      console.log(Math.random()); // 0 <= 난수 < 1
+      console.log(parseInt(Math.random() * 45) + 1); // 1~45까지
+
+      // javascript로 로또 가능 ..
+
+      // 반올림
+      console.log(Math.round(3.5678)); // 4
+
+      // 큰 값 뽑기
+      console.log(Math.max(3, 8, 9, 55, 10)); // 55
+
+      // Point 문자열 관련 함수
+      let str = "ABCDEF";
+
+      // document.write();
+      with (document) {
+        // with안에 있는 모든 자원은 document가 앞에 붙어 있는 것으로 인정한다
+        write(str + "<br>"); // ABCDEF
+        write(str.length + "<br>"); // 6
+        write(str.charAt(2) + "<br>"); // C
+        write(str.indexOf("D") + "<br>"); // 3
+        write(str.concat("홍길동") + "<br>"); // ABCDEF홍길동
+
+        // slice(start, end)
+        // substring(start, end)
+        // substr(start, length)
+        let str2 = str.replace("E", "ZZZZ");
+        write(str2 + "<br>"); // ABCDZZZZF
+        write(str.substring(2, 4) + "<br>"); // CD
+        write(str.substring(1, 1) + "<br>"); // ' '
+        write(str.substring(1, 2) + "<br>"); // B
+        write(str.substring(1) + "<br>"); // BCDEF
+
+        // Today Point
+        // Java : 개선된 for문
+        // for(String s : arr[]) {}
+
+        // MS(c#), JavaScript >> in
+        // Javascript : for(let s in arr) {}
+        // 주의!! >> index 값 리턴 ***********************
+
+        let strarr = "A B C D";
+        let arr = strarr.split(" "); // return Array
+        write(arr + "<br>"); // A,B,C,D >> Array에 있는 toString()을 재정의
+
+        write("<br>");
+        for (let index in arr) {
+          // 만약 java for(Object o : arr) {}
+          // javascript는 배열의 첨자값(index)를 리턴
+          // write(index); // 약속 : Array 개선된 for문 변수명은 무조건 index라고 하자!!
+          write(arr[index] + "<br>");
+        }
+      }
+    </script>
+  </body>
+</html>

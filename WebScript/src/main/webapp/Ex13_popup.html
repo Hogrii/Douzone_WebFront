@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>DB연결 검색한 결과 출력된 화면(선택)</h3>
+    <form action="" name="zipform">
+      <input
+        type="button"
+        value="200-300 서울시 강남구 역삼동"
+        name="btn"
+        onclick="zipSearch(this.value)"
+      /><br />
+      <input
+        type="button"
+        value="200-400 경기도 성남시 삼평동"
+        name="btn"
+        onclick="zipSearch(this.value)"
+      /><br />
+      <input
+        type="button"
+        value="300-500 제주시 서귀포동"
+        name="btn"
+        onclick="zipSearch(this.value)"
+      /><br />
+    </form>
+
+    <script>
+      function zipSearch(obj) {
+        console.log(obj);
+        // 우편번호와 주소 분리해서 변수에 담고
+        let zipcode = obj.substring(0, 7);
+        let addr = obj.substring(8);
+
+        // 부모창, 자식창
+        // 부모창 : Ex13_Script_Zipcode.html
+        // 자식창 : Ex13_popup.html
+        // 자식입장에서 부모에 접근하는 방법 >> opener
+        // window.opener >> Ex13_Script_Zipcode.html
+        // window.opener.mainform.zipcode.value = 우편번호;
+        // window.opener.mainform.addr.value = 주소;
+
+        window.opener.mainform.zipcode.value = zipcode;
+        window.opener.mainform.addr.value = addr;
+
+        // 현재 창 닫기
+        window.close();
+      }
+    </script>
+  </body>
+</html>

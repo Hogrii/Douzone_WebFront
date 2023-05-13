@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        Javascript는 객체지향언어
+
+        JSON(자바스크립트 객체 표기법)
+       */
+
+      let Member = {}; // 자바스크립트에서 객체 만들기
+      Member.name = "hong"; // { name: "hong"}
+      console.log(Member); // name : property, hong : value
+      console.log(Member.name);
+
+      Member.age = 100;
+
+      // 함수 추가
+      Member.print = function () {
+        document.write(this.name + " / " + this.age + "<br>");
+      };
+
+      Member.print();
+
+      // JSON 객체 만들기
+      let Grade = {
+        list: {
+          hong: 10,
+          kim: 20,
+          park: 30,
+        },
+        show: function () {
+          for (let key in this.list) {
+            document.write(key + ":" + this.list[key] + "<br>"); // this.list[key] : value
+          }
+        },
+      };
+      Grade.show();
+    </script>
+  </body>
+</html>

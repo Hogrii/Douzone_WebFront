@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Hello World
+    <script>
+      /*
+        onload 이벤트가 발생하는 시점 : body 태그 안에 있는 모든 요소가 브라우저 메모리에 loading된 후 >> DOM 생성 이후
+
+        function call() {}
+        1. <body onload="call()"> -> 촌스러운 방법,,
+        2. window.onload = call()
+        2.1 window.onload = function() {}
+
+        function call() {} >> 생성 이유,, 재사용 목적 >> 필요할 때마다 call() 호출하면 됨
+        but, 재사용을 하지 않을거라면 ~? >> 함수 이름 생략.. >> 익명 함수(일회성 함수)
+      */
+      window.onload = function () {
+        // 익명 함수(핸들러 함수)를 사용
+        let out = "";
+        out += "<ul>";
+        out += "<li>javascript</li>";
+        out += "<li>jquery</li>";
+        out += "<li>react</li>";
+        out += "</ul>";
+
+        document.body.innerHTML = out;
+
+        // DOM >> 동적 >> 기존에 없던 것을 추가, 있는 것을 삭제, 있는 것을 수정
+        const header = document.createElement("h1"); // createElement >> 태그 만들기
+        const textnode = document.createTextNode("hello"); // text 안쪽에 들어가는 값
+
+        header.appendChild(textnode); // appendChild : 자식 요소로 붙여버린다
+        // <h1>hello</h1>
+        console.log(header);
+
+        // body 자식 요소로 넣고 싶음
+        // but, 기존 body에는 <ul> 태그가 있음.. >> ul의 형제로 붙는다
+        document.body.appendChild(header);
+
+        // img 태그를 동적으로 생성하고 src 속성도 동적 추가하고
+        // src 속성에 w3schools.jpg를 넣고 body의 자식으로 append
+        // width=150px, height=150px도 추가
+        const img = document.createElement("img");
+        img.setAttribute("src", "img/w3schools.jpg");
+        img.setAttribute("width", "150");
+        img.setAttribute("height", "150");
+
+        document.body.appendChild(img);
+      };
+    </script>
+  </body>
+</html>

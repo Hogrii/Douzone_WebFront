@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    모델별 최저가 검색
+    <br />
+    <form name="frmdata">
+      <select
+        style="width: 200px"
+        name="productor"
+        onchange="eventProductor(this.form)"
+      >
+        <option value="A000" selected>제조사</option>
+        <!-- select[0]  -->
+        <option value="A001">삼성전자</option>
+        <option value="A002">LG전자</option>
+        <option value="A003">Apple</option>
+        <option value="A004">Dell</option>
+      </select>
+      <input type="text" name="valProductor" size="10" />
+      <input type="text" name="txtProductor" size="10" /> <br />
+    </form>
+
+    <script>
+      function eventProductor(frm) {
+        console.log(frm);
+        console.log(frm.productor.value); // 선택된 옵션의 Value 값이 나온다
+        // console.log(frm.produtor.text); // undefined ??
+        // select >> 여러개의 option >> option도 배열~?
+        console.log("index : " + frm.productor.selectedIndex); // selectedIndex -> select 태그 내 index를 리턴
+        // select >> [option][option][option][option][option]
+        //              0       1       2       3       4
+        console.log(frm.productor.options[0]); // 제조사
+
+        let index = frm.productor.selectedIndex;
+        let value = frm.productor.options[index].value;
+        let text = frm.productor.options[index].text; // option 내부 text
+
+        if (index == 0) {
+          frm.valProductor.value = "";
+          frm.txtProductor.value = "";
+        } else {
+          frm.valProductor.value = value;
+          frm.txtProductor.value = text;
+        }
+      }
+    </script>
+  </body>
+</html>

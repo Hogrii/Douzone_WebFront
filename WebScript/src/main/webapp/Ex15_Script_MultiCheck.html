@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" name="myform">
+      좋아하는 과목은 : <br />
+      <input type="checkbox" name="list" value="java" />JAVA<br />
+      <!-- checked = true, checked="checked"-->
+      <input type="checkbox" name="list" value="oracle" />ORACLE<br />
+      <input type="checkbox" name="list" value="html" />HTML<br />
+      <input type="checkbox" name="list" value="css" />CSS<br />
+      <input type="checkbox" name="list" value="script" />SCRIPT<br />
+      <input
+        type="button"
+        value="[전체선택] "
+        onclick="this.value=checkForm()"
+      /><br />
+      <br />
+      <input
+        type="button"
+        value="[전체선택]"
+        onclick="this.value=checkForm2(this.form.list)"
+      /><br />
+    </form>
+
+    <script>
+      let checkflag = "false"; // global
+
+      function checkForm() {
+        // name이 같으면 Array로 받는다
+        let list = document.myform.list;
+        console.log(list); // [input..][input..][input..][input..]
+        console.log(list.length); // 5
+
+        if (checkflag == "false") {
+          // point : 개선된 포문
+          for (let index in list) {
+            // javascript -> 배열의 첨자가 리턴
+            console.log(list[index]);
+            list[index].checked = "true";
+          }
+          checkflag = "true";
+          return "[선택해제하기]";
+        } else {
+          for (let index in list) {
+            console.log(list[index]);
+            list[index].checked = "";
+          }
+          checkflag = "false";
+          return "[전체선택]";
+        }
+      }
+
+      function checkForm2(list) {
+        console.log(list);
+        return "....";
+      }
+    </script>
+  </body>
+</html>

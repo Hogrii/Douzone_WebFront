@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="txtmessage" value="hello" />
+    <input type="button" id="btngetdata" value="getinfo" />
+    <hr />
+    <input type="button" id="btncreate" value="동적생성" />
+
+    <script>
+      window.onload = function () {
+        // 익명함수.. 핸들러 함수
+        // 동적인 처리(body 안에 요소를 통해서)
+        let btnobj = document.getElementById("btngetdata");
+        // bad한 코드 >> <input type="text" onclick=""> >> 연습할때는 괜찮음
+        btnobj.onclick = function () {
+          // 객체.이벤트명 = 익명함수
+          let txtmsg = document.getElementById("txtmessage");
+          let str = "";
+          str += "ID : " + txtmsg.getAttribute("id") + ", ";
+          str += "value : " + txtmsg.getAttribute("value");
+          console.log(str);
+        };
+      };
+
+      // btncreate 버튼에 click 이벤트를 걸고
+      // input type=text id=txtbox value=홍길동인 태그를 동적으로 생성하고
+      // body 요소에 자식 요소로 추가
+
+      document.getElementById("btncreate").onclick = function () {
+        const input = document.createElement("input");
+        input.setAttribute("type", "text");
+        input.setAttribute("id", "txtbox");
+        input.setAttribute("value", "홍길동");
+
+        document.body.appendChild(input);
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>DOM 슬라이드</h3>
+    <img src="img/1.jpg" alt="이미지" id="imgs" width="200" height="200" />
+    <hr />
+    <a href="#" id="prv">이전</a>||<a href="#" id="next">다음</a>
+
+    <script>
+      window.onload = function () {
+        let myphotos = ["img/1.jpg", "img/2.jpg", "img/3.jpg", "img/4.jpg"];
+
+        // 문제
+        // a 태그에 click 이벤트를 동적으로 부여(addEvent)
+        // 다음 버튼을 누를때마다 다음 사진 출력(순환)
+        // 이전 버튼을 누를때마다 이전 사진 출력(순환)
+
+        let global = 1;
+
+        document.getElementById("next").addEventListener("click", function () {
+          let image = document.getElementById("imgs");
+          let nowimage = image.getAttribute("src");
+
+          if (++global == myphotos.length) global = 0;
+          document.getElementById("imgs").src = myphotos[global];
+        });
+
+        document.getElementById("prv").addEventListener("click", function () {
+          let image = document.getElementById("imgs");
+          let nowimage = image.getAttribute("src");
+
+          if (global == 0) global = myphotos.length;
+          document.getElementById("imgs").src = myphotos[--global];
+        });
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="text/javascript">
+		window.onload = function() {
+			// body 안에 있는 모든 요소가 loading 되고 난 후에
+			
+			// DOM(트리형태 : node개념 : 부모, 자식, 형제 개념)
+			let menode;
+			menode = document.getElementById("me"); // div
+			menode.style.backgroundColor="gold";
+			
+			let parentnode = menode.parentNode; // body
+			parentnode.style.backgroundColor="blue";
+			
+			let grandnode = parentnode.parentNode; // html
+			grandnode.style.backgroundColor="green";
+			
+			let my = document.getElementById("mychild");
+			console.log(my);
+			console.log(my.firstChild.nodeName); // li -> *** AA는 li의 child..
+												 // nodeName >> li, ol, p
+			console.log(my.firstChild.innerText); // AA, 안쪽에 갖고 있는 Text를 확인 -> innerText
+			// innerHTML
+			// innerText >> value 속성이 없는 친구들 >> ex) div, p, li, span
+			console.log(my.firstChild.nextSibling.innerText); // BB, nextSibling -> 형제 요소
+			console.log(my.childNodes); // return Array, [<li>AA</li>][<li>BB</li>][<li>CC</li>]
+			console.log(my.childNodes[0]); // <li>AA</li>
+			console.log(my.childNodes.length) // 3
+		}
+	</script>
+  </head>
+  <body>
+  	<div>A</div><div>B</div><div id="me">C</div><div>D</div><div>E</div>
+  	<ul id="mychild"><li>AA</li><li>BB</li><li>CC</li></ul>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이벤트 처리시 주의사항</title>
+    <script>
+      function displayDate() {
+        console.log("call");
+        document.getElementById("demo").innerHTML = new Date();
+      }
+
+      // 1. 실행순서(body 안에 요소가 loading 되고 나서..)
+      // document.getElementById("mybtn").onclick = displayDate();
+
+      // 3. onload
+      window.onload = function () {
+        document.getElementById("mybtn2").onclick = displayDate;
+      };
+    </script>
+  </head>
+  <body>
+    <button id="mybtn">눌러봐</button>
+    <br />
+    <button id="mybtn2" onclick="">눌러봐2</button>
+    <br />
+    <button id="mybtn3" onclick="displayDate()">눌러봐3</button>
+    <br />
+    <p id="demo"></p>
+
+    <script>
+      // 2.
+      // document.getElementById("mybtn").onclick = displayDate(); // displayData() 하나 있는 것과 다르지 않음
+      // 버튼을 클릭하기 전에 displayDate()가 호출된다.. >> displayData(); 괄호가 있으면 당연히 호출..
+      document.getElementById("mybtn").onclick = displayDate; // ** Point 이벤트에 함수를 줄때는 괄호를 주지 않는다
+    </script>
+  </body>
+</html>

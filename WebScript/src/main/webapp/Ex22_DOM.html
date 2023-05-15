@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .democlass {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="div">
+      <h1 class="democlass">Hello World_1</h1>
+      <h1 class="democlass">Hello World_2</h1>
+      <h1 class="democlass">Hello World_3</h1>
+    </div>
+
+    <script>
+      // document.getElementsByTagName("h1")[0].removeAttribute("class"); // 동적으로 필요 없는 요소를 제거 할 수 있음
+
+      /*
+        // class 삭제하기(요소만..)
+        let harray = document.getElementsByTagName("h1");
+        console.log(harray);
+        for (let i = 0; i < harray.length; i++) {
+            harray[i].removeAttribute("class");
+        }
+       */
+
+      /*
+        // 자식요소 삭제하기 -> 이렇게하면 실패,,
+        let harr = document.getElementsByTagName("h1");
+        for (let index in harr) {
+            console.log(harr[index]);
+            console.log("index : " + index + ", length : " + harr.length);
+            document.getElementById("div").removeChild(harr[index]);
+        }
+
+        // 삭제 순서 0 -> 1 -> 2
+        // Hello World_2가 남아있음
+
+        // [0][1][2] -> [Hello World_1][Hello World_2][Hello World_3] -> index : 0, [0] 삭제
+        // [0][1] -> [Hello World_2][Hello World_3] -> index : 1, [1] 삭제
+        // [0] -> [Hello World_2] -> index : 2, [2]가 없네?
+       */
+
+      /*
+        // 개선된 for문으로 자식 요소 삭제하기
+        let harr = document.getElementsByTagName("h1");
+        for (let index in harr) {
+            if (harr.length > 0) {
+            document.getElementById("div").removeChild(harr[harr.length - 1]);
+            }
+        }
+       */
+
+      /*
+        // remove() 이용하기
+        let arr = document.getElementsByTagName("h1");
+        let len = arr.length; // 3
+        for (let i = 0; i < len; i++) {
+            // remove()는 자기자신도 삭제
+            arr[arr.length - 1].remove();
+        }
+       */
+    </script>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #add-btn {
+        padding: 5px 10px;
+        border: 0;
+        background: #f80;
+        color: white;
+        border-radius: 5px;
+      }
+      ul {
+        padding: 0;
+        list-style-position: inside;
+      }
+      li {
+        border-bottom: 1px solid #999;
+        padding: 5px 0;
+      }
+      .active {
+        background: gold;
+      } /* step3: 목록 클릭 스타일 */
+    </style>
+  </head>
+  <body>
+    <h1 id="title">할일 목록</h1>
+    <button id="add-btn">목록 추가</button>
+    <ul id="list">
+      <li>제목 1</li>
+      <li>제목 2</li>
+      <li>제목 3</li>
+      <li>제목 4</li>
+    </ul>
+
+    <script>
+      let title = document.getElementById("title");
+      let list = document.getElementById("list");
+      let li = document.getElementsByTagName("li");
+      let addbtn = document.getElementById("add-btn");
+
+      console.log(title);
+      console.log(list);
+      console.log(li);
+      console.log(addbtn);
+
+      function activeItem(event) {
+        // 이벤트 객체를 받아온다
+        console.log(event.target); // ul 태그 전체가 나온다
+        console.log(event.currentTarget); // 각각의 li 태그들이 나온다
+
+        if (event.target.nodeName == "LI") {
+          title.innerHTML = event.target.innerText;
+        }
+
+        // class 제거
+        // 모든 요소
+        for (let i = 0; i < event.target.parentNode.children.length; i++) {
+          event.target.parentNode.children[i].removeAttribute("class");
+        }
+        event.target.setAttribute("class", "active");
+      }
+      list.addEventListener("click", activeItem);
+
+      // 목록 추가
+      addbtn.addEventListener("click", function () {
+        let txt = prompt("제목입력");
+        if (txt != null) {
+          list.innerHTML += "<li>" + txt + "</li>";
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Javascript 비교하자면 Java에 collection 동일
+
+      let array = ["포도", "사과"];
+      console.log(array.toString()); // 포도 ,사과 -> toString() 재정의가 되어 있음을 알 수 있다
+      console.log(array + "-default toString() 생략"); // 포도 ,사과 -> toString()을 안붙여도 똑같이 출력
+
+      for (let i = 0; i < array.length; i++) {
+        console.log(array[i]);
+      }
+
+      for (let index in array) {
+        // index를 가져오는 개선된 for문 in
+        console.log(array[index]);
+      }
+
+      for (let value of array) {
+        // value를 가져오는 개선된 for문 of
+        console.log(value);
+      }
+
+      // ['포도','사과']
+      // 동적
+      array[2] = "바나나"; // 현재 배열의 방은 [포도][사과]이지만 새로 추가하면 동적으로 추가 된다
+      console.log(array.toString() + " / " + array.length); // 포도 ,사과, 바나나 / 3
+
+      // ['포도','사과','바나나']
+      // array[2] = '바나나' >> 권장 안함
+      // array.push('바나나) >> 권장
+      array[10] = "애플망고";
+      console.log(array.toString() + " / " + array.length); // 포도 ,사과, 바나나,,,,,,,,애플망고 >> undefined가 생성
+      console.log("array[9] >> " + array[9]);
+
+      let array2 = ["one", "two", "three"];
+      array2.length = 2;
+      console.log(array2 + "---" + array2.length); // one,two---2
+      array2.length = 4;
+      console.log(array2 + "---" + array2.length); // one,two,,---4
+
+      // 권장 방법
+      // Array >> stack(LIFO : 후입선출) >> push >> pop (good)
+      let array3 = [];
+      array3.push("aa");
+      array3.push("bb");
+      array3.push("cc");
+      array3.push("dd");
+      console.log(array3.pop()); // dd
+      console.log(array3.pop()); // cc
+      console.log(array3.pop()); // bb
+      console.log(array3.pop()); // aa
+    </script>
+  </head>
+  <body></body>
+</html>

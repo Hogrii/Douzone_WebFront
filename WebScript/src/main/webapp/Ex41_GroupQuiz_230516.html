@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--  
+        규칙 : 기본급여  : (정수값)
+        기타수당  : 국가유공자 + 5년이상 근속
+        총액      : (기본급 + 자격증 수당 + 자녀 수당 + 기타 수당)
+        세금      : 기본급 * 0.22 
+        실수령액  : 총액 - 세금
+        연봉      : 총액 * 12 + 기본급
+        천단위 콤마 처리 : 자율 (표현식 , 로직)
+        10,000,000원 
+ -->
+  </head>
+  <body>
+    <h2>급여 관리 시스템 지원 양식</h2>
+    <form name="payManage">
+      <table>
+        <tr>
+          <td>성명:</td>
+          <td><input type="text" id="name" name="name" size="20" /></td>
+        </tr>
+        <tr>
+          <td>기본급:</td>
+          <td><input type="text" name="basicPay" size="20" /></td>
+        </tr>
+        <tr>
+          <td>자격증 수당:</td>
+          <td>
+            <input type="radio" name="license" value="150000" />기사 150,000원
+            <input type="radio" name="license" value="100000" />산업기사
+            100,000원 <input type="radio" name="license" value="50000" />기능사
+            50,000원
+          </td>
+        </tr>
+        <tr>
+          <td>자녀 수당:</td>
+          <td>
+            <input type="radio" name="child" value="100000" />1인 100,000원
+            <input type="radio" name="child" value="200000" />2인 200,000원
+            <input type="radio" name="child" value="300000" />3인 300,000원
+          </td>
+        </tr>
+        <tr>
+          <td>기타 수당:</td>
+          <td>
+            <input type="checkbox" name="merit" value="100000" />국가유공자
+            100,000원
+            <input type="checkbox" name="longterm" value="100000" />5년이상 근속
+            100,000원
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <input
+              type="button"
+              name="btn"
+              value="계산하기"
+              onclick="resultSal(this.form)"
+              style="margin-left: 30px"
+            />
+          </td>
+        </tr>
+      </table>
+    </form>
+    <p></p>
+    <p></p>
+    <form name="resultForm">
+      <table align="left" style="margin-left: 0px">
+        <tr>
+          <th colspan="2">출력 결과</th>
+        </tr>
+        <tr>
+          <td width="100px">성명:</td>
+          <td><input type="text" name="resultName" /></td>
+        </tr>
+
+        <tr>
+          <td>기본급:</td>
+          <td><input type="text" name="resultBasicPay" /></td>
+        </tr>
+
+        <tr>
+          <td>자격증 수당:</td>
+          <td><input type="text" name="resultLicense" /></td>
+        </tr>
+
+        <tr>
+          <td>자녀 수당:</td>
+          <td><input type="text" name="resultChild" /></td>
+        </tr>
+
+        <tr>
+          <td>기타 수당:</td>
+          <td><input type="text" name="resultEtc" /></td>
+        </tr>
+
+        <tr>
+          <td>총액:</td>
+          <td><input type="text" name="resultTotalPay" /></td>
+        </tr>
+
+        <tr>
+          <td>세금:</td>
+          <td><input type="text" name="resultTax" /></td>
+        </tr>
+
+        <tr>
+          <td>실수령액:</td>
+          <td><input type="text" name="resultPay" /></td>
+        </tr>
+
+        <tr>
+          <td>연봉:</td>
+          <td><input type="text" name="resultYearlyPay" /></td>
+        </tr>
+      </table>
+    </form>
+
+    <script>
+      function resultSal(event) {
+        let name = document.querySelector("input[name='name']").value;
+        let basicPay = parseInt(
+          document.querySelector("input[name='basicPay']").value
+        );
+        let lisence = 0;
+        if (document.querySelector("input[name='license']:checked")) {
+          // 입력값이 없으면 null
+          lisence = parseInt(
+            document.querySelector("input[name='license']:checked").value
+          );
+        }
+        let child = 0;
+        if (document.querySelector("input[name='child']:checked")) {
+          child = parseInt(
+            document.querySelector("input[name='child']:checked").value
+          );
+        }
+        let merit = 0;
+        if (document.querySelector("input[name='merit']:checked")) {
+          merit = parseInt(
+            document.querySelector("input[name='merit']:checked").value
+          );
+        }
+        let longterm = 0;
+        if (document.querySelector("input[name='longterm']:checked")) {
+          longterm = parseInt(
+            document.querySelector("input[name='longterm']:checked").value
+          );
+        }
+
+        let etc = Math.round(parseInt(merit + longterm));
+        let total = Math.round(parseInt(basicPay + lisence + child + etc));
+        let tax = Math.round(parseInt(basicPay * 0.22));
+        let wage = Math.round(parseInt(total - tax));
+        let salary = Math.round(parseInt(wage * 12 + basicPay));
+
+        document.getElementsByName("resultName")[0].value = name;
+        document.getElementsByName("resultBasicPay")[0].value =
+          basicPay.toLocaleString();
+        document.getElementsByName("resultLicense")[0].value =
+          lisence.toLocaleString();
+        document.getElementsByName("resultChild")[0].value =
+          child.toLocaleString();
+        document.getElementsByName("resultEtc")[0].value = etc.toLocaleString();
+        document.getElementsByName("resultTotalPay")[0].value =
+          total.toLocaleString();
+        document.getElementsByName("resultTax")[0].value = tax.toLocaleString();
+        document.getElementsByName("resultPay")[0].value =
+          wage.toLocaleString();
+        document.getElementsByName("resultYearlyPay")[0].value =
+          salary.toLocaleString();
+      }
+    </script>
+  </body>
+</html>

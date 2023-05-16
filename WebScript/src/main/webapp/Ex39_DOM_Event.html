@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="Ex39.jsp" method="get" id="frm">
+      <fieldset>
+        <legend>주소록</legend>
+        <textarea rows="10" cols="30" name="txt" id="txt"></textarea>
+        <input type="submit" id="sub" value="전송하기" />
+      </fieldset>
+    </form>
+
+    <script>
+      /*
+        Server의 Trend
+        과거의 server : UI등 여러가지를 포함 -> 무거움
+        현재의 server : 데이터만 넘겨준다 -> 가벼움
+       */
+
+      const add = ["아무개", "email:hosboy93@naver.com"];
+      let frm = document.getElementById("frm");
+
+      function addr_Search(event) {
+        console.log(event.type);
+
+        let textarea = frm.txt;
+        textarea.value = "이름:주소\n";
+        textarea.value += add[0] + ", " + add[1] + "/n";
+      }
+
+      frm.addEventListener("submit", function (event) {
+        event.preventDefault(); // 기본 이벤트를 정지
+        addr_Search(event);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let myobj = {
+        name: "john",
+        age: "30",
+        city: "seoul",
+      };
+      console.log(myobj);
+
+      // Today Point
+      // [객체 데이터] --> [문자열 데이터]
+      // login.jsp?name=john&age=30&city=seoul
+      let stringobj = JSON.stringify(myobj);
+      console.log(stringobj);
+      console.log(typeof stringobj);
+
+      // [문자열 데이터] --> [객체 데이터]
+      // 단, 구조가 JSON 형태이어야만 한다. >> 조건 "속성값"
+      stringobj = JSON.parse(stringobj);
+      console.log(stringobj);
+      console.log(typeof stringobj);
+
+      /* 주의사항 */
+      /*
+        // "속성값" 조건을 만족하지 않을 때
+        let stringstr = '{name:"john", "age":30,"city:"seoul"}';
+        console.log(stringstr);
+        console.log(typeof stringstr);
+
+        let myjson = JSON.parse(stringstr);
+        console.log(myjson);
+       */
+
+      let stringstr = '{"name":"john", "age":30,"city":"seoul"}';
+      console.log(stringstr);
+      console.log(typeof stringstr);
+
+      let myjson = JSON.parse(stringstr);
+      console.log(myjson);
+      console.log(myjson.name);
+      console.log(myjson["name"]);
+
+      /*
+        index.htm, index.html
+        css >> common.cs
+        javascript >> common.js
+        json >> common.json >> 형식(MIME) >> application/json
+        xml >> common.xml
+       */
+
+      let mycars;
+      mycars = {
+        name: "john",
+        age: 30,
+        cars: [
+          {
+            name: "Ford",
+            model: ["Mustang", "Focus"],
+          },
+          {
+            name: "BMW",
+            model: ["520", "x5", "x6"],
+          },
+          {
+            name: "Fiat",
+            model: ["500", "panda"],
+          },
+        ],
+      };
+
+      // 신입 개발자
+      // JSON 데이터에서 원하는 값을 추출해서 화면에 이쁘게 출력
+      // 차량의 이름, 모델명을 출력
+      for (let index in mycars.cars) {
+        console.log(mycars.cars[index].name + " - " + mycars.cars[index].model);
+        document.write(
+          mycars.cars[index].name + " - " + mycars.cars[index].model
+        );
+        document.write("<br>");
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="UTF-8" />
+  <body>
+    <button class="btn">Button</button>
+    <script>
+      const btn = document.querySelector(".btn");
+
+      btn.addEventListener("click", function (e) {
+        console.log(this); // <button id="btn">Button</button>
+        console.log(e.currentTarget); // <button id="btn">Button</button>
+        console.log(this === e.currentTarget); // true
+      });
+
+      //addEventListener 메소드에서 지정한 이벤트 핸들러는 콜백 함수이지만 이벤트 핸들러 내부의 this는 이벤트 리스너에 바인딩된 요소(currentTarget)를 가리킨다.
+      //이것은 이벤트 객체의 currentTarget 프로퍼티와 같다.
+    </script>
+  </body>
+</html>

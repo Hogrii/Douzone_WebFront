@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // 1. 배열 >> [] >> let arr = [] >> push(), pop() >> LIFO
+      // 2. JSON >> {} >> let obj = {} >> obj.속성명, obj.함수명, obj[key]
+
+      // 일상의 데이터 날씨, 영화정보, 지하철 정보 데이터, 추출(OPEN API) >> xls, xml, json, csv
+
+      let students = [];
+      students.push({
+        // [{}] 배멸의 0번째 방에 객체가 들어있음
+        이름: "홍길동",
+        국어: "80",
+        영어: "60",
+      });
+      students.push({
+        이름: "아무개",
+        국어: "100",
+        영어: "50",
+      });
+      students.push({
+        이름: "이순신",
+        국어: "10",
+        영어: "100",
+      });
+
+      // [{},{},{}]
+      for (let index in students) {
+        // students[index]; >> ({이름: "홍길동",국어: "80",영어: "60"});
+        students[index].getSum = function () {
+          return this.국어 + this.영어;
+        };
+        students[index].getAvg = function () {
+          return this.getSum() / 2;
+        };
+      }
+      console.log(students);
+      for (let index in students) {
+        console.log(students[index].이름);
+        console.log(students[index].getSum());
+        console.log(students[index].getAvg());
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

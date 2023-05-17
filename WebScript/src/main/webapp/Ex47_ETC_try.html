@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // https://www.w3schools.com/js/js_errors.asp
+      //java처럼 필요에 따라 예외 던질 수 있고, 예외처리나면 그다음 실행 x
+      function myFunction() {
+        const message = document.getElementById("p01");
+        message.innerHTML = "";
+        let x = document.getElementById("demo").value;
+        try {
+          if (x.trim() == "") throw "is empty";
+          if (isNaN(x)) throw "is not a number";
+          x = Number(x);
+          if (x > 10) throw "is too high";
+          if (x < 5) throw "is too low";
+        } catch (err) {
+          message.innerHTML = "Error: " + err + ".";
+        } finally {
+          document.getElementById("demo").value = "";
+        }
+      }
+    </script>
+  </body>
+</html>

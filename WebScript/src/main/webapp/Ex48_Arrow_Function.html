@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>화살표 함수(줄임표현식)</title>
+  </head>
+  <body>
+    <p id="demo"></p>
+    <p id="demo2"></p>
+  </body>
+  <script>
+    //https://www.w3schools.com/js/js_arrow_function.asp
+    //일반함수 function foo(){}
+
+    //익명함수
+    let foo = function () {
+      console.log("foo...");
+    };
+    //실행방법
+    foo();
+
+    //ES6 (2015) 함수의 줄임 표현 ..Arrow Function 이름으로
+    let bar = () => console.log("bar...");
+    bar();
+
+    //매개변수 1개 return 함수
+    //let foo2 = function(x){return x} //부분문법은 가능하다.
+    let foo2 = (x) => x; //파라미터 1개는 간단.
+    let data = foo2(100);
+    console.log(data);
+
+    let hello;
+    //hello = function(val){return "hello"+val}
+    //hello=(val)=>"hello"+val;
+    hello = (val) => "hello" + val;
+    let v = hello("aaaa");
+    console.log(v);
+    document.getElementById("demo").innerHTML = hello("방가방가");
+
+    //매개변수 2개 이상인 경우
+    //function call(a,b) or function call(a,b,c,d)
+    //let foo3 =(a,b) =>{return  a+ b;}
+    let foo3 = (a, b) => a + b;
+    let v2 = foo3(10, 20);
+    console.log(v2);
+
+    //만약 함수안에 여러개의 논리가 필요하다면 (if, case, ....){구현}
+    let foo4 = (a, b) => {
+      let c = 100;
+      return a + b + c;
+    }; // 중괄호 써야함
+    let v3 = foo4(100, 100);
+    console.log(v3);
+
+    //응용
+    //함수 객체 return >> json
+    let foo5 = () => ({ a: 1, b: 2, c: 3 }); //json 자체가 {} 함수도 {} ,특수하게 () 쓴다.
+    let vobj = foo5();
+    console.log(vobj);
+
+    //즉시 실행 함수(암기)
+    (function () {
+      console.log("즉시 실행 함수");
+      //원칙적으로 함수는 호출에 의해서
+    })();
+    // 위 코드를 화살표 함수로 바꾸세요
+    (() => console.log("화살표 함수 즉시 실행"))();
+
+    // Arrays가 가지고 있는 다양한 함수 활용하기
+    // https://www.w3schools.com/jsref/jsref_obj_array.asp
+
+    /*
+      Today Point
+
+      암기(초급자)
+      1. for(let i=0; i<10; i==) {}
+      2. for(let index in Array) {Array[index]}
+      3. for(let value of Array) {value}
+
+      객체(JSON)
+      객체를 FOR문으로 사용가능
+      JSON {a:1, b:2, c:3}
+      1. for(let key in object) {객체[key]} >> 객체["a"] >> 1
+      2. let obj = {a:1} >> obj.a >> 1
+
+      추가적으로
+      Arrays.isArray()
+      1. Array.forEach(function(value, index, array){})
+      2. Array.map()
+     */
+
+    // <p id="demo2"></p>
+    myFunc = () => {
+      const data = ["A", "B", "C", "D"];
+      let x = document.getElementById("demo2");
+      x.innerHTML = Array.isArray(data); // 너 배열 맞니? true, false
+    };
+    myFunc(); // 함수 호출
+
+    let txt = "";
+    const numbers = [45, 5, 8, 16, 25];
+    // Array.forEach(function(value, index, array) {})
+    // 니가 가지고 있는 배열의 개수만큼 함수를 호출할거야(parameter 값을 전달해줄게 잘 써먹어봐 ..)
+
+    myFunc2 = (value, index, array) => {
+      // myFunc2(x, y, z)
+      txt = "(" + value + ")" + "[" + index + "]" + "[" + array + "]";
+      console.log(txt);
+    };
+    numbers.forEach(myFunc2);
+
+    // map
+    const numbers2 = [65, 44, 12, 4];
+    const newArr = numbers2.map(myFunction);
+    const newArr2 = numbers2.map(myFunction2);
+
+    document.getElementById("demo").innerHTML = newArr;
+
+    function myFunction(value) {
+      return value * 10;
+    }
+    console.log(newArr); // [650, 440, 120, 40]
+
+    function myFunction2(value, index, array) {
+      return value * 10 + index;
+    }
+    console.log(newArr2); // [650, 441, 122, 43]
+
+    // 응용하기
+    // 화살표 함수 Array 함수
+    let evens = [2, 4, 6, 8];
+    /*
+      1.
+      let odds = evens.map(function (value) {
+        return value + 1;
+      });
+     */
+    let odds = evens.map((value) => value + 1);
+    console.log(odds);
+
+    /*
+      2.
+      let nums = evens.map(function(value, index)) {
+        return value+index
+      }
+     */
+    let nums = evens.map((value, index) => value + index);
+    console.log(nums);
+
+    let arr = [];
+    evens.forEach((value) => {
+      if (value % 2 === 0) {
+        arr.push(value);
+      }
+    });
+    console.log(arr);
+  </script>
+</html>

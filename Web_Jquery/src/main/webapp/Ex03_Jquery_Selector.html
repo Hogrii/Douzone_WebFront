@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <ul>
+        <li>사과</li>
+        <li>배</li>
+        <li>수박</li>
+      </ul>
+    </div>
+    <div>
+      <ul>
+        <li>사과2</li>
+        <li>배2</li>
+        <li>수박2</li>
+      </ul>
+    </div>
+    <input type="text" value="AAA" />
+    <input type="text" value="BBB" />
+    <input type="text" value="CCC" />
+    <input type="password" />
+    <input type="radio" />
+    <input type="file" />
+    <hr />
+    <table>
+      <tr>
+        <td>이름</td>
+        <td>나이</td>
+        <td>취미</td>
+      </tr>
+      <tr>
+        <td>홍길동</td>
+        <td>50</td>
+        <td>훔치기</td>
+      </tr>
+      <tr>
+        <td>이순신</td>
+        <td>10</td>
+        <td>싸움</td>
+      </tr>
+      <tr>
+        <td>학생</td>
+        <td>30</td>
+        <td>잠자기</td>
+      </tr>
+    </table>
+    <hr />
+    <select>
+      <option>농구</option>
+      <option>축구</option>
+      <option>야구</option>
+      <option>배구</option>
+    </select>
+
+    <script>
+      $(document).ready(function () {
+        // https://api.jquery.com/category/selectors/basic-css-selectors/
+        // API를 검색, 예제 할용할 수 있으면 됨
+        $("body > *").css("color", "gold"); // 자식 선택자
+        $("div > *").css("color", "red");
+        $("input[type=text]").css("color", "green");
+
+        /*
+            DOM script : text, value(innerHTML, innerText)
+
+            JQuery 3총사 함수
+            val(), text(), html() > 값을 read, write > getter, setter
+            ex) val('홍길동') > write(setter)
+            ex) val() > read(getter)
+
+            jquery id 활용
+            <input type="text" id="userid" name="userid" value="hello">
+            >> $('#userid').val() >> $('#userid).val("world")
+          */
+
+        // DOM 객체에서 read**** 처음 만나는 요소 ***
+        console.log("?? : " + $("input[type=text]").val());
+
+        // **** write : 모든 요소에 적용 가능
+        $("input[type=text]").val("hong");
+
+        $("input[type=password]").val("11111");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+      .my {
+        background-color: lime;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h3>버튼 클릭시 동적태그 생성 추가하기</h3>
+      <input type="button" value="확인" id="btn1" />
+      <div id="result1"></div>
+    </div>
+    <div>
+      <h3>버튼 클릭 시 이미지 태그 생성 추가하기</h3>
+      <input type="button" value="확인" id="btn2" />
+      <div id="result2"></div>
+    </div>
+
+    <script>
+      $(function () {
+        $("#btn1").on("click", function () {
+          let ptag = $("<p></p>", {
+            // p태그를 만들고 json 객체를 통해서 속성을 정의해!
+            class: "my",
+            text: "동적추가",
+            click: function () {
+              $(this).css("background", "tomato");
+            },
+          });
+          $(ptag).appendTo($("#result1"));
+        });
+
+        // btn2 클릭시 img 태그 생성 src images/1.jpg alt, width, height, click시 이미지에 border 부여
+        // $(img).appendTo($('#result2'))
+        $("#btn2").on("click", function () {
+          let imgtag = $("<img />", {
+            src: "images/1.jpg",
+            alt: "...",
+            width: "1000px",
+            height: "100px",
+            click: function () {
+              $(this).css("border", "10px solid red");
+            },
+          });
+          $(imgtag).appendTo($("#result2"));
+        });
+      });
+    </script>
+  </body>
+</html>

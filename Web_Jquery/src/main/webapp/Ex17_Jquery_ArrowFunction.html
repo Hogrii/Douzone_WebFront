@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <p>java</p>
+    <p>jsp</p>
+    <p>oracle</p>
+    <p>jquery</p>
+
+    <script>
+      $(function () {
+        $.each(["A", "B"], function (index, element) {
+          console.log(index + " " + element);
+        });
+
+        $.each(["A", "B"], (index, element) =>
+          console.log(index + " " + element)
+        );
+
+        // $.each(["A", "B"], () => console.log($(this)));
+
+        $("p").each(function (index, element) {
+          console.log(index + " " + element); // textContent -> 값 볼 때..
+        });
+
+        // Arrow Function(화살표 함수)은 '함수 스코프'를 생성
+        // 다만, 실행 context 생성시 this를 바인딩하지 않는다 >> this 안됨..
+        // $("p").each(() => console.log("this : " + $(this).text()));
+      });
+    </script>
+  </body>
+</html>

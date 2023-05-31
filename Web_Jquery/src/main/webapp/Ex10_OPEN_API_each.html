@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <h3>DOM 슬라이드</h3>
+    <img src="" alt="이미지" id="imgs" width="200" height="200" />
+    <hr />
+    <a href="#" id="prv">이전</a>||<a href="#" id="next">다음</a>
+
+    <script>
+      const data = {
+        title: "Recent Uploads tagged raccoon",
+        link: "https:\/\/www.flickr.com\/photos\/tags\/raccoon\/",
+        description: "",
+        modified: "2023-05-16T04:35:14Z",
+        generator: "https:\/\/www.flickr.com",
+        items: [
+          {
+            title: "Feathered Beach Visitor",
+            link: "https:\/\/www.flickr.com\/photos\/georgeneat\/52900991672\/",
+            media: {
+              m: "https:\/\/live.staticflickr.com\/65535\/52900991672_d27ca25527_m.jpg",
+            },
+            date_taken: "2023-05-16T00:21:19-08:00",
+            description:
+              ' <p><a href="https:\/\/www.flickr.com\/people\/georgeneat\/">George Neat Road Trip Photography<\/a> posted a photo:<\/p> <p><a href="https:\/\/www.flickr.com\/photos\/georgeneat\/52900991672\/" title="Feathered Beach Visitor"><img src="https:\/\/live.staticflickr.com\/65535\/52900991672_d27ca25527_m.jpg" width="240" height="160" alt="Feathered Beach Visitor" \/><\/a><\/p> <p>0505-614-23<br \/> <br \/> Only thing happening at the Raccoon Creek Park Beach in Beaver County, PA is a few feathered visitors.<\/p> ',
+            published: "2023-05-16T04:35:14Z",
+            author: 'nobody@flickr.com ("George Neat Road Trip Photography")',
+            author_id: "115582557@N03",
+            tags: "beaver county george neat road trip canon photography scenic scenery landscape unitedstates usa us america outdoors outside roadtrip pa pennsylvania nature rural bird animal raccoon creek park beach state",
+          },
+          {
+            title: "Archibald Ralston",
+            link: "https:\/\/www.flickr.com\/photos\/georgeneat\/52901722159\/",
+            media: {
+              m: "https:\/\/live.staticflickr.com\/65535\/52901722159_eb486fa885_m.jpg",
+            },
+            date_taken: "2023-05-16T00:21:27-08:00",
+            description:
+              ' <p><a href="https:\/\/www.flickr.com\/people\/georgeneat\/">George Neat Road Trip Photography<\/a> posted a photo:<\/p> <p><a href="https:\/\/www.flickr.com\/photos\/georgeneat\/52901722159\/" title="Archibald Ralston"><img src="https:\/\/live.staticflickr.com\/65535\/52901722159_eb486fa885_m.jpg" width="240" height="160" alt="Archibald Ralston" \/><\/a><\/p> <p>0505-289-23<br \/> <br \/> Born in Campbeltown, Argyll, Scotland on 1757 to Gavin Ralston and Hannah Haywood. Archibald Ralston passed away on 9 Mar 1831. He served in the Pennsylvania State Militia during the Revolutionary War and is buried in Kings Creek Cemetery, Beaver County, PA.<\/p> ',
+            published: "2023-05-16T04:35:13Z",
+            author: 'nobody@flickr.com ("George Neat Road Trip Photography")',
+            author_id: "115582557@N03",
+            tags: "beaver county george neat road trip canon photography scenic scenery landscape unitedstates usa us america outdoors outside roadtrip pa pennsylvania nature rural raccoon creek state park",
+          },
+          {
+            title: "Blue Heron",
+            link: "https:\/\/www.flickr.com\/photos\/georgeneat\/52901948700\/",
+            media: {
+              m: "https:\/\/live.staticflickr.com\/65535\/52901948700_9271e44f05_m.jpg",
+            },
+            date_taken: "2023-05-16T00:21:19-08:00",
+            description:
+              ' <p><a href="https:\/\/www.flickr.com\/people\/georgeneat\/">George Neat Road Trip Photography<\/a> posted a photo:<\/p> <p><a href="https:\/\/www.flickr.com\/photos\/georgeneat\/52901948700\/" title="Blue Heron"><img src="https:\/\/live.staticflickr.com\/65535\/52901948700_9271e44f05_m.jpg" width="240" height="160" alt="Blue Heron" \/><\/a><\/p> <p>0505-553-23<br \/> <br \/> Blue Heron hanging out at Raccoon Creek Park Beach in Beaver County, PA<\/p> ',
+            published: "2023-05-16T04:35:13Z",
+            author: 'nobody@flickr.com ("George Neat Road Trip Photography")',
+            author_id: "115582557@N03",
+            tags: "beaver county george neat road trip canon photography scenic scenery landscape unitedstates usa us america outdoors outside roadtrip pa pennsylvania nature rural raccoon creek park beach state",
+          },
+          {
+            title: "HUNT0433",
+            link: "https:\/\/www.flickr.com\/photos\/29696308@N02\/52901335490\/",
+            media: {
+              m: "https:\/\/live.staticflickr.com\/65535\/52901335490_12d8118b2b_m.jpg",
+            },
+            date_taken: "2023-05-13T21:36:01-08:00",
+            description:
+              ' <p><a href="https:\/\/www.flickr.com\/people\/29696308@N02\/">Discrete_Photography<\/a> posted a photo:<\/p> <p><a href="https:\/\/www.flickr.com\/photos\/29696308@N02\/52901335490\/" title="HUNT0433"><img src="https:\/\/live.staticflickr.com\/65535\/52901335490_12d8118b2b_m.jpg" width="240" height="135" alt="HUNT0433" \/><\/a><\/p> ',
+            published: "2023-05-15T21:57:39Z",
+            author: 'nobody@flickr.com ("Discrete_Photography")',
+            author_id: "29696308@N02",
+            tags: "raccoon",
+          },
+          {
+            title: "B-LRV A350 CX219 MAN 130523a",
+            link: "https:\/\/www.flickr.com\/photos\/elferrito\/52901214608\/",
+            media: {
+              m: "https:\/\/live.staticflickr.com\/65535\/52901214608_6bb5f21ae4_m.jpg",
+            },
+            date_taken: "2023-05-13T06:52:49-08:00",
+            description:
+              ' <p><a href="https:\/\/www.flickr.com\/people\/elferrito\/">John Higgins (EF)<\/a> posted a photo:<\/p> <p><a href="https:\/\/www.flickr.com\/photos\/elferrito\/52901214608\/" title="B-LRV A350 CX219 MAN 130523a"><img src="https:\/\/live.staticflickr.com\/65535\/52901214608_6bb5f21ae4_m.jpg" width="240" height="164" alt="B-LRV A350 CX219 MAN 130523a" \/><\/a><\/p> <p>Airbus A350 941 Cathay Pacific.<br \/> <br \/> CX219 smokes her way on to runway 05R at Manchester International, after an early morning arrival from Hong Kong International Airport, touching down at 06:39. The A350 is hands down the best looking modern airliner in my humble opinion.<\/p> ',
+            published: "2023-05-15T20:40:56Z",
+            author: 'nobody@flickr.com ("John Higgins (EF)")',
+            author_id: "67219364@N03",
+            tags: "airbus a350 blrv a350941 cathay cathaypacific raccoon man egcc ringway manchester hongkong hkg hongkonginternationalairport aviation aircraft airbusindustrie widebody smokey touchdown flight runway 05rtouchdowns mobberely cheshire",
+          },
+          {
+            title: "Baby raccoons",
+            link: "https:\/\/www.flickr.com\/photos\/198340822@N06\/52900607835\/",
+            media: {
+              m: "https:\/\/live.staticflickr.com\/65535\/52900607835_4c9363dcc5_m.jpg",
+            },
+            date_taken: "2023-05-15T08:17:33-08:00",
+            description:
+              ' <p><a href="https:\/\/www.flickr.com\/people\/198340822@N06\/">idkwhattobuy<\/a> posted a photo:<\/p> <p><a href="https:\/\/www.flickr.com\/photos\/198340822@N06\/52900607835\/" title="Baby raccoons"><img src="https:\/\/live.staticflickr.com\/65535\/52900607835_4c9363dcc5_m.jpg" width="240" height="160" alt="Baby raccoons" \/><\/a><\/p> ',
+            published: "2023-05-15T17:01:55Z",
+            author: 'nobody@flickr.com ("idkwhattobuy")',
+            author_id: "198340822@N06",
+            tags: "photographer babyraccoons raccoons raccoon",
+          },
+          {
+            title: "Sleeping Outside",
+            link: "https:\/\/www.flickr.com\/photos\/jschumacher\/52900132211\/",
+            media: {
+              m: "https:\/\/live.staticflickr.com\/65535\/52900132211_13fd1b12c9_m.jpg",
+            },
+            date_taken: "2023-05-15T08:04:35-08:00",
+            description:
+              ' <p><a href="https:\/\/www.flickr.com\/people\/jschumacher\/">jschumacher<\/a> posted a photo:<\/p> <p><a href="https:\/\/www.flickr.com\/photos\/jschumacher\/52900132211\/" title="Sleeping Outside"><img src="https:\/\/live.staticflickr.com\/65535\/52900132211_13fd1b12c9_m.jpg" width="240" height="160" alt="Sleeping Outside" \/><\/a><\/p> <p>A raccoon sleeping outside in Morningside Park earlier today.<\/p> ',
+            published: "2023-05-15T16:28:21Z",
+            author: 'nobody@flickr.com ("jschumacher")',
+            author_id: "79119304@N00",
+            tags: "nyc morningsidepark raccoon",
+          },
+          {
+            title: "HUNT0419",
+            link: "https:\/\/www.flickr.com\/photos\/29696308@N02\/52899540607\/",
+            media: {
+              m: "https:\/\/live.staticflickr.com\/65535\/52899540607_b3381c82eb_m.jpg",
+            },
+            date_taken: "2023-05-10T00:35:08-08:00",
+            description:
+              ' <p><a href="https:\/\/www.flickr.com\/people\/29696308@N02\/">Discrete_Photography<\/a> posted a photo:<\/p> <p><a href="https:\/\/www.flickr.com\/photos\/29696308@N02\/52899540607\/" title="HUNT0419"><img src="https:\/\/live.staticflickr.com\/65535\/52899540607_b3381c82eb_m.jpg" width="240" height="135" alt="HUNT0419" \/><\/a><\/p> ',
+            published: "2023-05-15T16:19:24Z",
+            author: 'nobody@flickr.com ("Discrete_Photography")',
+            author_id: "29696308@N02",
+            tags: "raccoon",
+          },
+          {
+            title: "05100405",
+            link: "https:\/\/www.flickr.com\/photos\/29696308@N02\/52900487905\/",
+            media: {
+              m: "https:\/\/live.staticflickr.com\/31337\/52900487905_3455ef36ca_m.jpg",
+            },
+            date_taken: "2023-05-15T09:12:33-08:00",
+            description:
+              ' <p><a href="https:\/\/www.flickr.com\/people\/29696308@N02\/">Discrete_Photography<\/a> posted a video:<\/p> <p><a href="https:\/\/www.flickr.com\/photos\/29696308@N02\/52900487905\/" title="05100405"><img src="https:\/\/live.staticflickr.com\/31337\/52900487905_3455ef36ca_m.jpg" width="240" height="135" alt="05100405" \/><\/a><\/p> ',
+            published: "2023-05-15T16:12:33Z",
+            author: 'nobody@flickr.com ("Discrete_Photography")',
+            author_id: "29696308@N02",
+            tags: "raccoon",
+          },
+          {
+            title: "05080356",
+            link: "https:\/\/www.flickr.com\/photos\/29696308@N02\/52900090576\/",
+            media: {
+              m: "https:\/\/live.staticflickr.com\/31337\/52900090576_af1b6a1141_m.jpg",
+            },
+            date_taken: "2023-05-15T09:11:19-08:00",
+            description:
+              ' <p><a href="https:\/\/www.flickr.com\/people\/29696308@N02\/">Discrete_Photography<\/a> posted a video:<\/p> <p><a href="https:\/\/www.flickr.com\/photos\/29696308@N02\/52900090576\/" title="05080356"><img src="https:\/\/live.staticflickr.com\/31337\/52900090576_af1b6a1141_m.jpg" width="240" height="135" alt="05080356" \/><\/a><\/p> ',
+            published: "2023-05-15T16:11:19Z",
+            author: 'nobody@flickr.com ("Discrete_Photography")',
+            author_id: "29696308@N02",
+            tags: "raccoon",
+          },
+          {
+            title: "Peek-a-boo",
+            link: "https:\/\/www.flickr.com\/photos\/huronwoods\/52900102274\/",
+            media: {
+              m: "https:\/\/live.staticflickr.com\/65535\/52900102274_82da474017_m.jpg",
+            },
+            date_taken: "2023-05-13T20:07:52-08:00",
+            description:
+              ' <p><a href="https:\/\/www.flickr.com\/people\/huronwoods\/">Jacqui1224!<\/a> posted a photo:<\/p> <p><a href="https:\/\/www.flickr.com\/photos\/huronwoods\/52900102274\/" title="Peek-a-boo"><img src="https:\/\/live.staticflickr.com\/65535\/52900102274_82da474017_m.jpg" width="240" height="160" alt="Peek-a-boo" \/><\/a><\/p> <p>Ms Raccoon is checking in at the kitchen window to see if there is extra food.<\/p> ',
+            published: "2023-05-15T15:12:18Z",
+            author: 'nobody@flickr.com ("Jacqui1224!")',
+            author_id: "51150368@N05",
+            tags: "raccoon outdoors animals",
+          },
+          {
+            title: "raccoon weston bend sp 5-3-2023-3",
+            link: "https:\/\/www.flickr.com\/photos\/trjco11\/52897874949\/",
+            media: {
+              m: "https:\/\/live.staticflickr.com\/65535\/52897874949_2e8a1a2981_m.jpg",
+            },
+            date_taken: "2023-05-03T06:04:52-08:00",
+            description:
+              ' <p><a href="https:\/\/www.flickr.com\/people\/trjco11\/">trjco<\/a> posted a photo:<\/p> <p><a href="https:\/\/www.flickr.com\/photos\/trjco11\/52897874949\/" title="raccoon weston bend sp 5-3-2023-3"><img src="https:\/\/live.staticflickr.com\/65535\/52897874949_2e8a1a2981_m.jpg" width="240" height="160" alt="raccoon weston bend sp 5-3-2023-3" \/><\/a><\/p> ',
+            published: "2023-05-14T18:49:52Z",
+            author: 'nobody@flickr.com ("trjco")',
+            author_id: "187126348@N06",
+            tags: "mammals raccoon missouriwildlife carnivore",
+          },
+          {
+            title: "Cindy \u2764\ufe0f",
+            link: "https:\/\/www.flickr.com\/photos\/182499330@N04\/52897836750\/",
+            media: {
+              m: "https:\/\/live.staticflickr.com\/65535\/52897836750_3721993e45_m.jpg",
+            },
+            date_taken: "2023-05-14T09:46:01-08:00",
+            description:
+              ' <p><a href="https:\/\/www.flickr.com\/people\/182499330@N04\/">dziugintele777<\/a> posted a photo:<\/p> <p><a href="https:\/\/www.flickr.com\/photos\/182499330@N04\/52897836750\/" title="Cindy \u2764\ufe0f"><img src="https:\/\/live.staticflickr.com\/65535\/52897836750_3721993e45_m.jpg" width="240" height="159" alt="Cindy \u2764\ufe0f" \/><\/a><\/p> <p>\u2714\ufe0f <a href="https:\/\/monikamonikute2000.wixsite.com\/website\/post\/cindy" rel="noreferrer nofollow">All Info &amp; Credits<\/a><br \/> <br \/> <br \/> \u2714\ufe0fOutfit: ViSion Cindy Top &amp; Shorts Fat Pack <br \/> New available at <a href="https:\/\/maps.secondlife.com\/secondlife\/ACCESS\/70\/130\/22" rel="noreferrer nofollow">ACCESS<\/a><br \/> \u2714\ufe0fPhone Case: Boutique#187 Raccoon <br \/> For Happy Weekend 60L available at <a href="https:\/\/maps.secondlife.com\/secondlife\/Cakhmaim\/224\/32\/1291" rel="noreferrer nofollow">Mainstore<\/a><br \/> \u2714\ufe0fTattoo: Stardust Leiko BOM Fat Pack New available at <a href="https:\/\/maps.secondlife.com\/secondlife\/BREATHE\/204\/167\/1002" rel="noreferrer nofollow">Mainstore<\/a><br \/> \u2714\ufe0fHair: Stealthic Break New available at <a href="https:\/\/maps.secondlife.com\/secondlife\/Rapture\/116\/141\/108" rel="noreferrer nofollow">Mainstore<\/a><br \/> \u2714\ufe0fHead: LeLUTKA Briannon 3.1 available at <a href="https:\/\/maps.secondlife.com\/secondlife\/LeLutka\/121\/137\/24" rel="noreferrer nofollow">Mainstore<\/a><br \/> \u2714\ufe0fBody: Legacy Female 1.6 available at <a href="https:\/\/maps.secondlife.com\/secondlife\/The Shops\/97\/34\/26" rel="noreferrer nofollow">Mainstore<\/a><br \/> <br \/> \ud83c\udfb5 <a href="https:\/\/www.youtube.com\/watch?v=498Suk0bS0U" rel="noreferrer nofollow">Tune<\/a><br \/> <br \/> <br \/> Thanks to all my Followers and my great Sponsors \u2764\ufe0f<\/p> ',
+            published: "2023-05-14T16:47:27Z",
+            author: 'nobody@flickr.com ("dziugintele777")',
+            author_id: "182499330@N04",
+            tags: "vision stardust boutique187 stealthic lelutka evo evox evolution new release sl slavatar slstyle slfashion slevent sltattoo access accessevent accesssl cyndy top shorts maitreya legacy perky kupra reborn rolls transparency raccoon phone case pose animation female girl women unisex mesh bento leiko tattoo bom bakeonmesh flowers butterflies handdrawn original dreamy spring blog blogs blogger photography photographer slblog slblogger slphotography slphotographer",
+          },
+          {
+            title: "Raccoon Sleeping in Tree",
+            link: "https:\/\/www.flickr.com\/photos\/jasonreynoldsphotography\/52897669005\/",
+            media: {
+              m: "https:\/\/live.staticflickr.com\/65535\/52897669005_7f8c75700d_m.jpg",
+            },
+            date_taken: "2023-04-30T17:38:54-08:00",
+            description:
+              ' <p><a href="https:\/\/www.flickr.com\/people\/jasonreynoldsphotography\/">Jason Reynolds Photography<\/a> posted a photo:<\/p> <p><a href="https:\/\/www.flickr.com\/photos\/jasonreynoldsphotography\/52897669005\/" title="Raccoon Sleeping in Tree"><img src="https:\/\/live.staticflickr.com\/65535\/52897669005_7f8c75700d_m.jpg" width="240" height="240" alt="Raccoon Sleeping in Tree" \/><\/a><\/p> ',
+            published: "2023-05-14T15:37:23Z",
+            author: 'nobody@flickr.com ("Jason Reynolds Photography")',
+            author_id: "189558149@N02",
+            tags: "wildlife michigan raccoon sleeping tree",
+          },
+          {
+            title: "Raton laveur, Raccoon",
+            link: "https:\/\/www.flickr.com\/photos\/159284114@N07\/52895905114\/",
+            media: {
+              m: "https:\/\/live.staticflickr.com\/65535\/52895905114_cfcd0f2dcd_m.jpg",
+            },
+            date_taken: "2023-05-10T08:05:34-08:00",
+            description:
+              ' <p><a href="https:\/\/www.flickr.com\/people\/159284114@N07\/">Serge Rivard<\/a> posted a photo:<\/p> <p><a href="https:\/\/www.flickr.com\/photos\/159284114@N07\/52895905114\/" title="Raton laveur, Raccoon"><img src="https:\/\/live.staticflickr.com\/65535\/52895905114_cfcd0f2dcd_m.jpg" width="240" height="160" alt="Raton laveur, Raccoon" \/><\/a><\/p> <p>Victoriaville Qu\u00e9bec, Canada<\/p> ',
+            published: "2023-05-14T00:50:30Z",
+            author: 'nobody@flickr.com ("Serge Rivard")',
+            author_id: "159284114@N07",
+            tags: "mammif\u00e8re ratonlaveur raccoon procyonlotor",
+          },
+          {
+            title: "Raton laveur, Raccoon",
+            link: "https:\/\/www.flickr.com\/photos\/159284114@N07\/52896189198\/",
+            media: {
+              m: "https:\/\/live.staticflickr.com\/65535\/52896189198_c248434b9a_m.jpg",
+            },
+            date_taken: "2023-05-10T08:05:04-08:00",
+            description:
+              ' <p><a href="https:\/\/www.flickr.com\/people\/159284114@N07\/">Serge Rivard<\/a> posted a photo:<\/p> <p><a href="https:\/\/www.flickr.com\/photos\/159284114@N07\/52896189198\/" title="Raton laveur, Raccoon"><img src="https:\/\/live.staticflickr.com\/65535\/52896189198_c248434b9a_m.jpg" width="240" height="160" alt="Raton laveur, Raccoon" \/><\/a><\/p> <p>Victoriaville Qu\u00e9bec, Canada<\/p> ',
+            published: "2023-05-14T00:50:30Z",
+            author: 'nobody@flickr.com ("Serge Rivard")',
+            author_id: "159284114@N07",
+            tags: "mammif\u00e8re ratonlaveur raccoon procyonlotor",
+          },
+          {
+            title: "Raton laveur, Raccoon",
+            link: "https:\/\/www.flickr.com\/photos\/159284114@N07\/52895904804\/",
+            media: {
+              m: "https:\/\/live.staticflickr.com\/65535\/52895904804_3295a12252_m.jpg",
+            },
+            date_taken: "2023-05-10T08:04:28-08:00",
+            description:
+              ' <p><a href="https:\/\/www.flickr.com\/people\/159284114@N07\/">Serge Rivard<\/a> posted a photo:<\/p> <p><a href="https:\/\/www.flickr.com\/photos\/159284114@N07\/52895904804\/" title="Raton laveur, Raccoon"><img src="https:\/\/live.staticflickr.com\/65535\/52895904804_3295a12252_m.jpg" width="240" height="160" alt="Raton laveur, Raccoon" \/><\/a><\/p> <p>Victoriaville Qu\u00e9bec, Canada<\/p> ',
+            published: "2023-05-14T00:50:30Z",
+            author: 'nobody@flickr.com ("Serge Rivard")',
+            author_id: "159284114@N07",
+            tags: "mammif\u00e8re ratonlaveur raccoon procyonlotor",
+          },
+          {
+            title: "Northern Raccoon",
+            link: "https:\/\/www.flickr.com\/photos\/neildemaster\/52895741175\/",
+            media: {
+              m: "https:\/\/live.staticflickr.com\/65535\/52895741175_09d577a4cd_m.jpg",
+            },
+            date_taken: "2023-05-08T16:43:03-08:00",
+            description:
+              ' <p><a href="https:\/\/www.flickr.com\/people\/neildemaster\/">Neil DeMaster<\/a> posted a photo:<\/p> <p><a href="https:\/\/www.flickr.com\/photos\/neildemaster\/52895741175\/" title="Northern Raccoon"><img src="https:\/\/live.staticflickr.com\/65535\/52895741175_09d577a4cd_m.jpg" width="240" height="171" alt="Northern Raccoon" \/><\/a><\/p> ',
+            published: "2023-05-13T21:21:38Z",
+            author: 'nobody@flickr.com ("Neil DeMaster")',
+            author_id: "84169650@N07",
+            tags: "animal banpesticides conservation conservenature conservewildlife environment environmental keepourairclean mammal mothernaturealwayswatching nature naturephotography njmammal njnature njraccoon njwildlife northernraccoon outdoor outdoorphotography procyonlotor protectnature protectourenvironment protectwildlife raccoon wildlife wildlifephotography",
+          },
+          {
+            title: "Nap Time",
+            link: "https:\/\/www.flickr.com\/photos\/tomfenskephotography\/52894117038\/",
+            media: {
+              m: "https:\/\/live.staticflickr.com\/65535\/52894117038_cba97aac63_m.jpg",
+            },
+            date_taken: "2023-05-12T20:03:01-08:00",
+            description:
+              ' <p><a href="https:\/\/www.flickr.com\/people\/tomfenskephotography\/">Tom Fenske Photography<\/a> posted a photo:<\/p> <p><a href="https:\/\/www.flickr.com\/photos\/tomfenskephotography\/52894117038\/" title="Nap Time"><img src="https:\/\/live.staticflickr.com\/65535\/52894117038_cba97aac63_m.jpg" width="240" height="160" alt="Nap Time" \/><\/a><\/p> <p>Is it ever NOT nap time?<br \/> <a href="https:\/\/www.tomfenskephotography.com" rel="noreferrer nofollow">tomfenskephotography<\/a><\/p> ',
+            published: "2023-05-13T06:06:40Z",
+            author: 'nobody@flickr.com ("Tom Fenske Photography")',
+            author_id: "58839349@N02",
+            tags: "nature yard fur flickrfriday raccoon wild wildlife sleep tree",
+          },
+          {
+            title: "You lookin at me?",
+            link: "https:\/\/www.flickr.com\/photos\/leamiller\/52891748292\/",
+            media: {
+              m: "https:\/\/live.staticflickr.com\/65535\/52891748292_c82e7a1a14_m.jpg",
+            },
+            date_taken: "2021-03-12T17:14:21-08:00",
+            description:
+              ' <p><a href="https:\/\/www.flickr.com\/people\/leamiller\/">Lea Miller<\/a> posted a photo:<\/p> <p><a href="https:\/\/www.flickr.com\/photos\/leamiller\/52891748292\/" title="You lookin at me?"><img src="https:\/\/live.staticflickr.com\/65535\/52891748292_c82e7a1a14_m.jpg" width="135" height="240" alt="You lookin at me?" \/><\/a><\/p> <p>Raccoons are another of my fav to follow and capture. They are so inquisitive and cheeky! They do like to study you and see if they can entice you to give up your treats and allow full access, lol.<\/p> ',
+            published: "2023-05-12T18:09:57Z",
+            author: 'nobody@flickr.com ("Lea Miller")',
+            author_id: "43139290@N08",
+            tags: "raccoon mammal animal animalportrait outdoors outside nature naturephotography fun funshot flickr flickrfriday eyes nose",
+          },
+        ],
+      };
+
+      console.log(data);
+      console.log("data.items : " + data.items);
+      // let myphotos = [] // 이미지 경로 push 후 슬라이드 만들기
+
+      $(function () {
+        $("#imgs").attr("src", myphotos[0]);
+        console.log("imgs : " + $("#imgs").attr("src"));
+      });
+
+      let myphotos = [];
+      $.each(data.items, function (index, obj) {
+        myphotos.push(obj.media.m);
+      });
+
+      let global = 1;
+
+      $("#next").click(function () {
+        // let image = $("#imgs");
+        let nowimage = $("#imgs").attr("src");
+
+        if (++global == myphotos.length) global = 0;
+        $("#imgs").attr("src", myphotos[global]);
+      });
+
+      $("#prv").click(function () {
+        let nowimage = $("#imgs").attr("src");
+
+        if (global == 0) global = myphotos.length;
+        $("#imgs").attr("src", myphotos[--global]);
+      });
+    </script>
+  </body>
+</html>

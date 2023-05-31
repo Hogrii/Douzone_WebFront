@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  </head>
+  <body>
+    Textbox : <input type="text" id="txtname" />
+    <br />
+
+    RadioButton : Checked 속성
+    <input type="radio" name="gender" value="M" />남
+    <input type="radio" name="gender" value="F" />여
+    <br />
+
+    Dropdownlist(select 태그)
+    <select id="isF">
+      <option value="java">자바</option>
+      <option value="jsp">웹</option>
+      <option value="oracle">오라클</option>
+    </select>
+    <br />
+    Dropdownlist(select 태그)
+    <select id="isF2" multiple="multiple" size="3">
+      <option value="java">자바</option>
+      <option value="jsp">웹</option>
+      <option value="oracle">오라클</option>
+    </select>
+    <br />
+    <input type="button" value="확인" id="btnok" />
+    <br />
+    <div id="myform">submit button : <input type="submit" value="전송" /></div>
+
+    <script>
+      // jQuery = $(축약형)
+      jQuery(function () {
+        // Form 안에 있는 요소들 Jquery로 다루기
+        // input text
+        $("#txtname").val("hong");
+        console.log($("#txtname").val());
+
+        // radio -> checked : checked, true
+        // radio btn name이 같아야 같은 radio >> 같은 name이 1개 이상 : Array
+        $("input:radio").val(["F"]); // radio btn은 배열이기 때문에 여러개의 요소 중 하나를 선택한다고 생각해야 한다(= 배열에서 한개)
+
+        // 만약 여러개의 radio가 있음 >> id, name
+        // name 찾기
+        console.log($("input:radio").val()); // 여러개의 radio가 있으면 가장 처음 만나는 radio의 value를 반환
+        console.log($("input:checked").val());
+        console.log($("input:radio[name=gender]:checked").val());
+
+        // select(단일 선택)
+        console.log($("#isF").val()); // 선택된 option 태그의 value를 가져온다
+        //selected가 적용되게 하려면
+        $("#isF").val("oracle"); // oracle 옵션을 선택
+        console.log($("#isF").val());
+        $("#isF2").val(["java", "oracle"]); // multiple select
+        // console.log($("#isF2").val()); // isF2 태그에 선택된 모든 요소의 값을 출력
+
+        // btnok를 눌렀을때 isF2에 선택된 모든 요소 출력
+        $("#btnok").click(function () {
+          const data = $("#isF2").val();
+          console.log(data);
+          for (let index in data) {
+            console.log("value : " + data[index]);
+          }
+        });
+
+        // .is() : ()안에 셀렉터가 있는지 확인
+        if ($("#myform").children().is("input:submit")) {
+          console.log("true");
+        } else {
+          console.log("false");
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <p>Jquery hover(mouseover , mouseleave)</p>
+
+    ID:<input type="text" id="txtuserid" />
+    <hr />
+    <input type="button" id="btncopy" value="copy" />
+    <hr />
+    Copy ID:<input type="text" id="txtcopyuserid" />
+
+    <hr />
+    <select id="select_hobby">
+      <option value="JAVA">java</option>
+      <option value="SCRIPT">script</option>
+      <option>jdbc</option>
+    </select>
+    <br />
+    <input type="text" id="txtselect" />
+    <hr />
+    <table style="border: 1px solid red">
+      <tr>
+        <td>암호</td>
+        <td>
+          <input type="text" id="txtpwd" size="20" maxlength="5" />
+        </td>
+      </tr>
+      <tr>
+        <td>암호확인</td>
+        <td>
+          <input type="text" id="txtpwd2" size="20" maxlength="5" />
+        </td>
+      </tr>
+    </table>
+    <div id="message" style="color: red"></div>
+
+    <script>
+      $(function () {
+        // ready()와 동일
+
+        // 클릭 이벤트 -> 복사
+        $("#btncopy").click(function () {
+          // const data = $('#txtuserid').val();
+          // $('#txtcopyuserid').val(data);
+
+          $("#txtcopyuserid").val($("#txtuserid").val());
+        });
+
+        // text() 가져오기
+        $("#select_hobby").change(function () {
+          const text = $(":selected").text();
+          console.log(text);
+
+          const text2 = $("#select_hobby option:selected").text();
+          console.log(text2);
+
+          const val = $("#select_hobby").val(); // *** value가 없으면 text가 value 역할을 해준다
+          console.log(val);
+        });
+
+        // 비밀번호 비교 이벤트
+        $("#txtpwd2").keyup(function () {
+          if ($("#txtpwd").val() != $("#txtpwd2").val()) {
+            // div p > innerText, innerHTML
+            $("#message").text("<h3> 암호가 일치하지 않아요</h3>");
+          } else {
+            $("#message").html("<h3> 암호가 일치합니다</h3>");
+          }
+        });
+
+        // Quiz
+        // body 안에 있는 모든 input 태그 focus가 커서가 오면 input에 background-color gray
+        // body 안에 있는 모든 input 태그 blur가 커서가 떠나면 input background-color white
+        $("input").focus(function () {
+          $(this).css("background-color", "gray");
+        });
+        $("input").blur(function () {
+          $(this).css("background-color", "white");
+        });
+
+        // 전원스위치(on, off) 이벤트 -> toggle()
+        // toggle(function(){}, function(){})
+        $("p").hover(
+          function () {
+            $(this).css("background-color", "gold");
+          },
+          function () {
+            $(this).css("background-color", "white");
+          }
+        );
+      });
+    </script>
+  </body>
+</html>

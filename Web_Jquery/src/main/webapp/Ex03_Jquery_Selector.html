@@ -87,6 +87,12 @@
         $("input[type=text]").val("hong");
 
         $("input[type=password]").val("11111");
+
+        // jquery, javascript 같이 써도 된다
+        setTimeout(function () {
+          const value = $("select > option:selected").val();
+          alert("select tag value : " + value);
+        }, 3000);
       });
     </script>
   </body>

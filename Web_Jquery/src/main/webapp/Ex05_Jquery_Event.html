@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <p>on 함수를 사용해서 다중 이벤트 처리하기</p>
+    <hr />
+    <button>버튼</button>
+
+    <script>
+      $(function () {
+        // ready
+        /*
+            Jquery 이벤트(on, off 이벤트 동적 추가, 제거) >> parameter로 json 객체를 받는다
+            2.x.x -> bind(), unbind()
+            3.x.x -> on(), off()
+         */
+        // $("p").on(function () {});
+        // 제이쿼리는 함수객체의 파라미터로 제이슨 객체를 받을 수 있다
+        $("p").on({
+          // on()으로 이벤트 추가
+          mouseleave: function () {
+            $(this).css("background-color", "red");
+          },
+          click: function () {
+            $(this).css("background-color", "green");
+          },
+          mouseenter: function () {
+            $(this).css("background-color", "blue");
+          },
+        });
+
+        $("button").click(function () {
+          // off()로 이벤트 제거
+          $("p").off("click");
+        });
+      });
+    </script>
+  </body>
+</html>

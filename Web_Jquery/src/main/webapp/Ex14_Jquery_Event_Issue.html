@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        //모든 요소가 로딩되고 나서
+        //이벤트가 동작 되도록 하세요 (문제 입니다)
+        /*
+        $("#sdata").change(function () {
+          alert("이벤트 처리요^^");
+        });
+         */
+
+        // 동적인 이벤트 처리
+        // 특정 이벤트를 실행할 때 객체를 찾는다
+        $(document).on("change", "#sdata", function () {
+          alert("이벤트 처리요^^");
+        });
+      });
+
+      function appendElement() {
+        let html = "";
+        html += "<select id='sdata'>";
+        html += "<option>data_1</option>";
+        html += "<option>data_2</option>";
+        html += "<option>data_3</option>";
+        html += "<option>data_4</option>";
+        html += "</select>";
+
+        $("#parent").empty(); //remove(자기자신 삭제)
+        $("#parent").append(html);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="parent"></div>
+    <button onclick="appendElement()">Append</button>
+  </body>
+</html>

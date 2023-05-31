@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <style>
+      .redcolor {
+        color: red;
+      }
+
+      .bluecolor {
+        color: blue;
+      }
+
+      .greencolor {
+        color: green;
+      }
+
+      .whitecolor {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>이름</td>
+        <td>나이</td>
+        <td>취미</td>
+      </tr>
+      <tr>
+        <td>홍길동</td>
+        <td>50</td>
+        <td>훔치기</td>
+      </tr>
+      <tr>
+        <td>이순신</td>
+        <td>10</td>
+        <td>싸움</td>
+      </tr>
+      <tr>
+        <td>학생</td>
+        <td>30</td>
+        <td>잠자기</td>
+      </tr>
+    </table>
+    <hr />
+    <h3>이벤트</h3>
+    <a href="http://www.naver.com">네이버 바로가기</a>
+    <hr />
+    <div id="btnclick">click</div>
+    <div id="btnclick2">click2</div>
+    <div id="stylediv">스타일적용</div>
+
+    <script>
+      /*
+        addClass() - Adds one or more classes to the selected elements
+        removeClass() - Removes one or more classes from the selected elements
+        toggleClass() - Toggles between adding/removing classes from the selected elements
+        css() - Sets or returns the style attribute
+       */
+      $(function () {
+        $('td:contains("홍길동")').addClass("redcolor");
+        $('td:contains("홍길동")')
+          .siblings()
+          .addClass("bluecolor")
+          .parent()
+          .find("td:eq(0)") // 필터함수
+          .addClass("greencolor");
+
+        // $("#btnclick").on("click", function () {
+        //   alert("click");
+        // });
+
+        $("#btnclick").on({
+          // json 객체를 parameter로 사용하는 것을 권장(추가,, 제거 용이)
+          click: function () {
+            alert("click");
+          },
+        });
+
+        // stylediv에 on 함수 사용
+        // mouseover >> 현재 div에 addClass(greencolor)
+        // mouseout >> 현재 div에 removeClss(greencolor) 후 bluecolor 추가
+        $("#stylediv").on({
+          mouseover: function () {
+            $(this).addClass("greencolor");
+          },
+          mouseout: function () {
+            $(this).removeClass("greencolor");
+            $(this).addClass("bluecolor");
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <title>Insert title here</title>
+   <script type="text/javascript">
+   /*  
+     1. XMLHttpRequest 객체 얻기
+     2. onreadystatechange 이벤트 핸들러 구현 (함수)
+     3. 요청 정보 ( open() )
+     4. 요청 보내기 (send() )
+     5. 응답 처리 (Text(JSON), xml )
+   */
+   let xhr = null;
+   
+   function getInstance(){
+       if(window.XMLHttpRequest){
+           xhr = new XMLHttpRequest;
+        }else if(window.ActiveXObject){ //IE
+           console.log("IE");
+        }else{
+           throw new Error("Ajax 비동기 지원하지 않아요");
+        }
+       return xhr;
+   }
+   
+   function handlerStateChange(){
+        if(xhr.readyState == 4){ //서버에서 응답이 왔다면
+           if(xhr.status >= 200 && xhr.status < 300){ //응답이 성공적이라면
+              //개발자 마음 (가공)
+               //서버가 클라이언트에게 응답하는 데이터 형식
+               //1. Text (text, html , script , css , json(^^)) >> responseText
+               //2. xml >> responseXml
+               //가공전에 데이터 확인 습관
+               console.log(xhr.responseText); // string
+               let TempArray = [];
+               TempArray = xhr.responseText.split(",");
+               let printdata = "";
+               for(let i=0; i<TempArray.length; i++) {
+            	   printdata += TempArray[i] + "<br>";
+               }
+               document.getElementById("div_view").innerHTML = printdata;
+           }else{
+              console.log("비정상 응답 : " + xhr.status);
+           }
+        }
+   }
+   
+   function sendData(){
+      xhr = getInstance();
+      xhr.onreadystatechange = handlerStateChange;  //() 괄호 하시면 안되요
+      
+      const key = document.getElementById("select_menu").selectedIndex;
+      
+      xhr.open("POST","Ex06_Server_Param.jsp?no="+key);
+      xhr.send(); //비동기 전송 시작
+   }
+   </script>
+</head>
+<body>
+   <h3>Ajax param 값 처리하기</h3>
+   <div style="background-color: gray;width: 500px;text-align: center;">
+      <hr style="color: red">
+      <select id="select_menu" onchange="sendData()">
+         <option>0번 index</option>
+         <option>1번 index</option>
+         <option>2번 index</option>
+      </select>
+   </div>
+   <span id="div_view"></span>
+</body>
+</html>

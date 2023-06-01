@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+<script type="text/javascript">
+	// 비동기 서버 요청 select change 이벤트 발생시 비동기 요청
+	// 받은 데이터를 div 안쪽에 출력
+
+	let xhr = null;
+
+	function getInstance() {
+		if (window.XMLHttpRequest) {
+			xhr = new XMLHttpRequest();
+		} else if (window.ActiveXObject) {
+			//IE
+			console.log("IE");
+		} else {
+			throw new Error("Ajax 비동기 지원하지 않아요");
+		}
+		return xhr;
+	}
+
+	function handlerStateChange() {
+		if (xhr.readyState == 4) {
+			//서버에서 응답이 왔다면
+			if (xhr.status >= 200 && xhr.status < 300) {
+				//응답이 성공적이라면
+				//서버가 클라이언트에게 전달한 (응답한) 데이터 형식
+				//1. Text(html,txt,css,json)  2. xml
+
+				console.log(xhr.responseText);
+				document.getElementById("txtdata").innerHTML = xhr.responseText;
+			} else {
+				console.log("비정상 응답 : " + xhr.status);
+			}
+		}
+	}
+
+	function sendData() {
+		xhr = getInstance();
+		xhr.onreadystatechange = handlerStateChange; //() 괄호 하시면 안되요
+		const key = document.getElementById("emp").value;
+		xhr.open("POST", "Ex08_EmpDataList.jsp?empno=" + key);
+		xhr.send(); //비동기 전송 시작
+	}
+</script>
+</head>
+<body>
+	<h3>사원 검색(동기)</h3>
+	<a href="Ex08_EmpDataList.jsp?empno=7788">사원검색</a>
+	<hr />
+	<h3>사원 검색(비동기)</h3>
+	<select name="emp" id="emp" onchange="sendData()">
+		<option value="0000">SELECT EMPNO</option>
+		<option value="7788">SCOTT</option>
+		<option value="7902">FORD</option>
+		<option value="7521">WORD</option>
+	</select>
+	<hr />
+	<div id="txtdata"></div>
+</body>
+</html>

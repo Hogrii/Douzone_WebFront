@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+      .header {
+        width: 100%;
+        height: 64px;
+        text-align: center;
+        padding-top: 24px;
+      }
+
+      .header > p {
+        font-size: x-large;
+      }
+
+      .main {
+        width: 100%;
+        padding: 24px;
+      }
+
+      table {
+        text-align: center;
+      }
+
+      .btns {
+        text-align: center;
+      }
+
+      .btns > input {
+        margin-left: 10px;
+        margin-right: 10px;
+        border-radius: 4px;
+      }
+
+      #viewpage {
+        margin-left: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <p><b>광진구 흡연실</b></p>
+    </div>
+    <div class="main"></div>
+    <select name="viewpage" id="viewpage">
+      <option value="1" selected="selected">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+      <option value="13">13</option>
+      <option value="14">14</option>
+      <option value="15">15</option>
+      <option value="16">16</option>
+      <option value="17">17</option>
+      <option value="18">18</option>
+      <option value="19">19</option>
+      <option value="20">20</option>
+      <option value="21">21</option>
+      <option value="22">22</option>
+      <option value="23">23</option>
+      <option value="21">24</option>
+      <option value="22">25</option>
+      <option value="23">26</option>
+      <option value="23">27</option>
+    </select>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">연번</th>
+          <th scope="col">구분</th>
+          <th scope="col">시설명</th>
+          <th scope="col">위치</th>
+          <th scope="col">영업소재지</th>
+          <th scope="col">흡연실형태</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <div class="footer"></div>
+
+    <script>
+      $(function () {
+        let apiKey =
+          "XG7uOfY14QGY4GkDuOT%2FKztIScPzq%2FLecn4JOvO4wZft5Dge%2FOdpmy9p3rSOwtjSjPjhRzDW4x76OymIImRyDw%3D%3D";
+        let viewPage = 1;
+        callAjax();
+
+        $("#viewpage").change(function () {
+          viewpage = $(this).val();
+          callAjax();
+        });
+
+        function callAjax() {
+          $.ajax({
+            url:
+              "https://api.odcloud.kr/api/15040615/v1/uddi:d494c578-f45e-4c42-9dde-c277cbd8717a?page=" +
+              viewpage +
+              "&perPage=10&serviceKey=" +
+              apiKey,
+            dataType: "json",
+            success: function (data) {
+              let index = 0;
+              let items = "";
+
+              console.log(data);
+              $.each(data.data, function (index, element) {
+                if (index < 10) {
+                  let num = element.연번;
+                  let divi = element.구분;
+                  let name = element.시설명;
+                  let facility = element["실외     실내"];
+                  let location = element["영업소소재지(도로 명)"];
+                  let type = element["흡연실 형태"];
+
+                  items += `
+                <tr>
+                    <th scope="row">${num}</th>
+                    <td>${divi}</td>
+                    <td>${name}</td>
+                    <td>${facility}</td>
+                    <td>${location}</td>
+                    <td>${type}</td>
+                </tr>`;
+                }
+              });
+              $("#tbody").html(items);
+            },
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

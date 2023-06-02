@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <style>
+      h1 {
+        margin-top: 60px;
+      }
+
+      .table {
+        margin-top: 60px;
+      }
+
+      .par {
+        margin-top: 40px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .btn-group {
+        margin: 0 auto;
+      }
+    </style>
+    <script>
+      $(function () {
+        let apikey =
+          "KMmVe2jeGfI1zfWHz99fyhcWjvbB3LCEnIvpgsKcb5BfAPJ5oaTvDE5%2Fil2ztBMM7AiRKmDbpM8vpXAFe%2BWW%2BQ%3D%3D";
+        let viewpage = 1;
+        callajax();
+        $("#viewpage").change(function () {
+          viewpage = $(this).val();
+          callajax();
+        });
+        function callajax() {
+          $.ajax({
+            url:
+              "https://api.odcloud.kr/api/15004305/v1/uddi:47443eb3-d5a1-4515-81f1-99f010293919_201909161307?page=" +
+              viewpage +
+              "&perPage=10&serviceKey=" +
+              apikey,
+            dataType: "json",
+            success: function (responseText) {
+              console.log("페이지 : " + responseText.page * 10);
+              console.log(responseText);
+              let page = responseText.page;
+              let list;
+              $.each(responseText.data, function (index, element) {
+                let tr = "";
+                tr =
+                  '<tr><th scope="row">' +
+                  ((page - 1) * 10 + index + 1) +
+                  "</th>";
+                tr += "<td>" + element["병원 명"] + "</td>";
+                tr += "<td>" + element.설립형태 + "</td>";
+                tr += "<td>" + element.주소 + "</td>";
+                tr += "<td>" + element.종별구분 + "</td>";
+                tr += "<td>" + element.대표전화 + "</td>";
+                tr += "<td>" + element.병상수 + "</td></tr>";
+                list += tr;
+              });
+              $("#tbody").html(list);
+            },
+          });
+        }
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1 class="text-center">공공보건 의료기관 현황</h1>
+      <span>페이지</span
+      ><select name="viewpage" id="viewpage">
+        <option value="1" selected="selected">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+      </select>
+      <table class="table table-striped table-bordered">
+        <thead class="table-success">
+          <tr>
+            <th scope="col">번호</th>
+            <th scope="col">병원명</th>
+            <th scope="col">설립형태</th>
+            <th scope="col">주소</th>
+            <th scope="col">종별구분</th>
+            <th scope="col">대표전화</th>
+            <th scope="col">병상수</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div class="btn-group"></div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+</html>

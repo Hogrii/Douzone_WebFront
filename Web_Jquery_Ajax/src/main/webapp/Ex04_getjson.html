@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+      // https://api.jquery.com/jQuery.getJSON/
+      // jQuery.getJSON( url [, data ] [, success ] )
+      // dataType : "json"
+
+      /*
+      $(function () {
+        $("#btn").click(function () {
+          $.getJSON("Ex04_json.json", function (responsetext) {
+            let items = [];
+            $.each(responsetext, function (index, element) {
+              items.push(element.num + " " + element.Name + "<br>");
+            });
+            $("#display").html(items);
+          });
+        });
+      });
+       */
+
+      $(function () {
+        $("#btn").click(function () {
+          $.ajax({
+            url: "Ex04_json.json",
+            dataType: "json",
+            success: function (responsetext) {
+              let items = [];
+              console.log(responsetext.num);
+            },
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="btn">
+      <div class="btnload">JSON DATA LOAD</div>
+    </div>
+    <div id="display"></div>
+  </body>
+</html>

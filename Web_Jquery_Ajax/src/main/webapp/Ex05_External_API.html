@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+      /*
+        http://api.flickr.com/services/feeds/photos_public.gne?
+        tags=raccoon&tagmode=any&format=json&jsoncallback=?
+        getJSON 데이터 비동기 처리하기
+
+        http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?
+
+        JSON 객체 가공(parameter)
+        tags=raccoon&tagmode=any&format=json
+
+        input type="text" >> 싸이
+        const data = {
+            tags:
+            tagmode: any,
+            format:json
+        }
+
+        데이터를 받아서 처리하는데 이미지 경로만 뽑자 -> 라쿤 >> 이미지 경로 추출
+        이미지 태그를 동적으로 생성하고 해당 src 속성에 추출한 경로를 넣어 화면에 뿌리자
+       */
+
+      $(function () {
+        $("#btn").click(function () {
+          console.log($("#text").val());
+          let data = {
+            tags: $("#text").val(),
+            tagmode: "any",
+            format: "json",
+          };
+
+          let url = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+
+          $.getJSON(url, data, function (responsetext) {
+            let items = [];
+            console.log(responsetext.items); 
+            $.each(responsetext.items, function (index, element) {
+              items.push("<img src='" + element.media.m + "' />");
+            });
+            $("#display").html(items);
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <input type="text" id="text" />
+    <input type="button" id="btn" value="가져오기" />
+    <div id="display"></div>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+      /*
+            // jQuery.post( url [, data ] [, success ] [, dataType ] )
+            xmlHttpRequest >> xhr.open("POST".""); 와 동일
+
+            1. bad
+                $.post('Ex03_Server.jsp?name=hong&pwd=1004') >> 직접 쓰는건 가장 나쁜 방법
+            2. 
+                const name = $('#name').val();
+                const pwd = $('#pwd').val();
+                const param = "name="+name+"&pwd="+pwd;
+                    $.post("Ex03_Server.jsp", param);
+            3. good
+                const data = {
+                    "name": $('#name').val(),
+                    "pwd": $('#pwd').val()
+                }
+                    $.post("Ex03_Server.jsp", data);
+       */
+
+      $(function () {
+        $("#btn").click(function () {
+          const data = {
+            name: $("#name").val(),
+            pwd: $("#pwd").val(),
+          };
+
+          $.post("Ex03_Server.jsp", data, function (responsetext) {
+            // success시 자동 호출되는 callback 함수 >> 응답이 왔고(readyState = 4) 정상일 때(xhr.state = 200~299)
+            $("#message").html(responsetext);
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    이름 : <input type="text" id="name" /><br />
+    비번 : <input type="text" id="pwd" /><br />
+    <input type="button" id="btn" value="비동기 전송" />
+    <hr />
+    <div id="messgae"></div>
+  </body>
+</html>

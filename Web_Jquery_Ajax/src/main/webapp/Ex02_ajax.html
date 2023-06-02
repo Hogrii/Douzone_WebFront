@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+      /*
+        Low-Level Interface 비동기 함수 : jQuery.ajax = $.ajax
+        jQuery.ajax( url [, settings ] )
+        공식 : https://api.jquery.com/jQuery.ajax/
+
+        url : 서버한테 요청하는 주소
+        settings : 여러가지 옵션 >> {json 객체 형태로 표현}
+            beforeSend : ready State -> 3번일 때 구현하는 친구
+            complete : ready State -> 4번
+            dataType (default: Intelligent Guess (xml, json, script, or html)) -> server가 나에게 주는 데이터타입
+       */
+
+      $(function () {
+        $("#message").click(function () {
+          // 비동기 처리
+          $.ajax({
+            url: "Ex02_menu.html",
+            dataType: "html", // '서버가 클라이언트에게 응답하는 데이터는 순수 html 형식이다'를 정의
+            success: function (responsetext) {
+              // success : 응답이 왔고(readystate = 4), 정상이고(xhr.state = 200~299), parameter로 데이터로 받는다
+              // Function( Anything data, String textStatus, jqXHR jqXHR )
+              console.log(responsetext);
+              $("#menudiv").html($(responsetext).find("li"));
+            },
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="menudiv">
+      <a href="#" id="menu1"></a>
+    </div>
+    <span id="message">클릭하세요</span>
+  </body>
+</html>

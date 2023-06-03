@@ -30,7 +30,11 @@
             dataType: "json",
             success: function (responsetext) {
               let items = [];
-              console.log(responsetext.num);
+              console.log(responsetext.num + " " + responsetext.Name);
+              $.each(responsetext, function(index, element) {
+            	  items.push(element.num + " " + element.Name + "<br>")
+              })
+              $("#display").html(items);
             },
           });
         });

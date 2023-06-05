@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <style type="text/css">
+      .wrap-loading {
+        /*로딩 이미지*/
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin-left: -21px;
+        margin-top: -21px;
+      }
+
+      .display-none {
+        /*감추기*/
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!--  https://loading.io/ -->
+    <div class="wrap-loading display-none">
+      <div>
+        <img
+          src="https://tistory2.daumcdn.net/tistory/1898109/skin/images/Spinner.gif"
+        />
+      </div>
+      <!-- <div id="treedata"></div> -->
+    </div>
+    <table id="treedata"></table>
+
+    <script>
+      $(function () {
+        $.ajax({
+          url: "Ex07_board.json",
+          type: "post", // XmlHttpRequest >> httpReq.open("POST", "URL");
+          dataType: "json", // 서버가 클라이언트에게 응답하는 데이터 형식(text(text, html, json, script), xml)
+          success: function (data) {
+            // readyState = 4 && 200 <= state < 299
+            console.log(data);
+            $.each(data, function (index, obj) {
+              $("#treedata").append(
+                obj.id +
+                  " " +
+                  obj.name +
+                  " " +
+                  obj.title +
+                  " " +
+                  obj.content +
+                  "<br>"
+              );
+            });
+          },
+          error: function (xhr) {
+            // function(xmlHttpRequest xhr) : 500(서버 문제), 404(없는 페이지), 304(권한 없음)
+            console.log(xhr.status);
+          },
+          beforeSend: function () {
+            // readyState = 3(서버에서 데이터가 오는 도중..) >> 다른 것들 작업을 못하게 막을 수 있다
+            // 대체로 loading 이미지 같은거 보여줌
+            console.log("img load ....");
+            $(".wrap-loading").removeClass("display-none");
+          },
+          complete: function () {
+            // readyState = 4
+            // 도착하면 loading 이미지 제거해줌
+            console.log("img end display none");
+            $(".wrap-loading").addClass("display-none");
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

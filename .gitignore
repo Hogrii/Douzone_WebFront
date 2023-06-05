@@ -55,3 +55,17 @@ WebScript_ajax/src/main/webapp/images/w3schools.jpg
 WebScript_ajax/src/main/webapp/WEB-INF/lib/ojdbc6.jar
 
 Web_Jquery_Ajax/src/main/webapp/Ex00_Note.html
+
+Web_Jquery_Ajax/src/main/webapp/WEB-INF/lib/commons-beanutils-1.8.3.jar
+
+Web_Jquery_Ajax/src/main/webapp/WEB-INF/lib/commons-collections-3.2.jar
+
+Web_Jquery_Ajax/src/main/webapp/WEB-INF/lib/commons-lang-2.6.jar
+
+Web_Jquery_Ajax/src/main/webapp/WEB-INF/lib/commons-logging-1.1.1.jar
+
+Web_Jquery_Ajax/src/main/webapp/WEB-INF/lib/ezmorph-1.0.6.jar
+
+Web_Jquery_Ajax/src/main/webapp/WEB-INF/lib/json-lib-2.4-jdk15.jar
+
+Web_Jquery_Ajax/src/main/webapp/WEB-INF/lib/ojdbc6.jar

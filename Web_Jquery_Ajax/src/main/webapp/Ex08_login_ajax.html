@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <form id="form1" name="form1" action="" method="post">
+      <table>
+        <tr>
+          <td>아이디</td>
+          <td>
+            <input type="text" id="user_id" name="user_id" tabindex="1" />
+          </td>
+          <td rowspan="2">
+            <input
+              type="button"
+              id="login"
+              tabindex="3"
+              value="로그인"
+              style="height: 50px"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>비밀번호</td>
+          <td>
+            <input type="password" id="user_pwd" name="user_pwd" tabindex="2" />
+          </td>
+        </tr>
+      </table>
+    </form>
+    <div id="message"></div>
+    <script>
+      /*
+      $.ajax() 함수를 사용해서 id 값 pwd 값 비동기로 전송하고
+      그 결과에 따라서 : success , fail
+      $('#message').html('<p>로그인 성공</p>')
+      $('#message').html('<p>로그인 실패</p>')
+      Jquery effect 효과 적용 (슬라이드 효과)
+
+      parameter  연습   >> {}
+      val() , text() , html() , attr() 연습
+      effect > slideUp() , slideDown() 연습
+
+      숨겨진 함정 : 넘어오는 데이터는 반드시 console 로 출력해서 확인 또 확인 ...
+      if(result == 'success'){} ....
+       */
+
+      $(function () {
+        $("#login").click(function () {
+          const data = {
+            user_id: $("#user_id").val(),
+            user_pwd: $("#user_pwd").val(),
+          };
+
+          let url = "Ex08_loginok.jsp";
+          $.ajax({
+            url: url,
+            dataType: "html",
+            data: data,
+            success: function (responsetext) {
+              console.log(responsetext);
+              let response = responsetext.trim();
+              if (response == "success") {
+                $("#message").html("<p>로그인 성공</p>");
+              } else {
+                $("#message").html("<p>로그인 실패</p>");
+              }
+              $("#message").html(responsetext).slideUp();
+              $("#message").html(responsetext).slideDown();
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

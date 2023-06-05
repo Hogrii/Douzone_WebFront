@@ -84,10 +84,10 @@
       <option value="21">21</option>
       <option value="22">22</option>
       <option value="23">23</option>
-      <option value="21">24</option>
-      <option value="22">25</option>
-      <option value="23">26</option>
-      <option value="23">27</option>
+      <option value="24">24</option>
+      <option value="25">25</option>
+      <option value="26">26</option>
+      <option value="27">27</option>
     </select>
     <table class="table">
       <thead>
@@ -131,9 +131,9 @@
               console.log(data);
               $.each(data.data, function (index, element) {
                 if (index < 10) {
-                  let num = element.연번;
-                  let divi = element.구분;
-                  let name = element.시설명;
+                  let num = element["연번"];
+                  let divi = element["구분"];
+                  let name = element["시설명"];
                   let facility = element["실외     실내"];
                   let location = element["영업소소재지(도로 명)"];
                   let type = element["흡연실 형태"];

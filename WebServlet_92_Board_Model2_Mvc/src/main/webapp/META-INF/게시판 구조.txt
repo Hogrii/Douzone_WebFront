@@ -115,7 +115,7 @@ idx ,  ref  , depth ,  step ,   		title
 	답글1-3(4번글)
 	답글1-2(3번글)
 	답글1-1(2번글)
-
+>> https://cafe.naver.com/erpzone?iframe_url=/MyCafeIntro.nhn%3Fclubid=30938434 네이버 답글 참고
 
 2       2       0      	0       					원본글2
 3       1       1      	1       					원본글     답글1-1 (원본글 : idx:1)
